@@ -1,0 +1,459 @@
+/*   
+Theme Name: Book WP
+Theme URI: http://storyhack.com/book-wp
+Description: A theme that is built for having an online book.
+Author: Bryce Beattie
+Author URI: http://bryceabeattie.com
+Version: 2
+License: BSD
+
+*/
+/*
+	Based off the wonderful
+	HTML5 Reset Wordpress Theme :: style.css
+	----------------------------------------------------------
+	We have learned much from/been inspired by/taken code where offered from:
+	
+	Eric Meyer					:: http://ericmeyer.com
+	HTML5 Doctor				:: http://html5doctor.com
+	and the HTML5 Boilerplate	:: http://html5boilerplate.com
+	
+	Special thanks: The Wordpress theme owes its start to an empty theme authored 
+		by Chris Coyier & Jeff Starr: http://digwp.com
+	
+-------------------------------------------------------------------------------*/
+
+/* Let's default this puppy out
+-------------------------------------------------------------------------------*/
+
+html, body, body div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, figure, footer, header, hgroup, menu, nav, section, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}									
+
+article, aside, figure, footer, header, hgroup, nav, section {display: block;}
+
+/* Responsive images and other embedded objects
+   Note: keeping IMG here will cause problems if you're using foreground images as sprites, like, say for Google Maps custom placemarkers. 
+   There has been a report of problems with standard Google maps as well, but we haven't been able to duplicate or diagnose the issue. */
+img,
+object,
+embed {max-width: 100%;}
+
+/* force a vertical scrollbar to prevent a jumpy page */
+html {overflow-y: scroll;}
+
+/* we use a lot of ULs that aren't bulleted. 
+	don't forget to restore the bullets within content. */
+ul {list-style: none;}
+
+blockquote, q {quotes: none;}
+
+blockquote:before, 
+blockquote:after, 
+q:before, 
+q:after {content: ''; content: none;}
+
+a {margin: 0; padding: 0; font-size: 100%; vertical-align: baseline; background: transparent;}
+
+del {text-decoration: line-through;}
+
+abbr[title], dfn[title] {border-bottom: 1px dotted #000; cursor: help;}
+
+/* tables still need cellspacing="0" in the markup */
+table {border-collapse: collapse; border-spacing: 0;}
+th {font-weight: bold; vertical-align: bottom;}
+td {font-weight: normal; vertical-align: top;}
+
+hr {display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0;}
+
+input, select {vertical-align: middle;}
+
+pre {
+	white-space: pre; /* CSS2 */
+	white-space: pre-wrap; /* CSS 2.1 */
+	white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
+	word-wrap: break-word; /* IE */
+}
+
+input[type="radio"] {vertical-align: text-bottom;}
+input[type="checkbox"] {vertical-align: bottom; *vertical-align: baseline;}
+.ie6 input {vertical-align: text-bottom;}
+
+select, input, textarea {font: 99% sans-serif;}
+
+table {font-size: inherit; font: 100%;}
+ 
+/* Accessible focus treatment
+	people.opera.com/patrickl/experiments/keyboard/test */
+a:hover, a:active {outline: none;}
+
+small {font-size: 85%;}
+
+strong, th {font-weight: bold;}
+
+td, td img {vertical-align: top;} 
+
+/* Make sure sup and sub don't screw with your line-heights
+	gist.github.com/413930 */
+sub, sup {font-size: 75%; line-height: 0; position: relative;}
+sup {top: -0.5em;}
+sub {bottom: -0.25em;}
+
+/* standardize any monospaced elements */
+pre, code, kbd, samp {font-family: monospace, sans-serif;}
+
+/* hand cursor on clickable elements */
+.clickable,
+label, 
+input[type=button], 
+input[type=submit], 
+button {cursor: pointer;}
+
+/* Webkit browsers add a 2px margin outside the chrome of form elements */
+button, input, select, textarea {margin: 0;}
+
+/* make buttons play nice in IE */
+button {width: auto; overflow: visible;}
+ 
+/* scale images in IE7 more attractively */
+.ie7 img {-ms-interpolation-mode: bicubic;}
+
+/* prevent BG image flicker upon hover */
+.ie6 html {filter: expression(document.execCommand("BackgroundImageCache", false, true));}
+
+/* let's clear some floats */
+.clearfix:before, .clearfix:after { content: "\0020"; display: block; height: 0; overflow: hidden; }  
+.clearfix:after { clear: both; }  
+.clearfix { zoom: 1; }  
+
+
+
+/* Ok, this is where the fun starts.
+-------------------------------------------------------------------------------*/
+
+/* new Linux- and Windows-friendly sans-serif font stack: http://mky.be/fontstack */
+/* body {font: 13px Helmet, Freesans, sans-serif;}*/
+body {font: Georgia, serif;}
+
+
+/* using local fonts? make sure to read up on Paul Irish's 
+	Bulletproof @font-face syntax: http://mky.be/font-face/bulletproof/ */
+
+/* we like off-black for text */
+body, select, input, textarea {color: #333;}
+
+a {color: #03f;}
+a:hover {color: #69f;}
+
+/* Custom text-selection colors (remove any text shadows: twitter.com/miketaylr/status/12228805301) */
+::-moz-selection{background: #fcd700; color: #fff; text-shadow: none;}
+::selection {background: #fcd700; color: #fff; text-shadow: none;} 
+
+/*	j.mp/webkit-tap-highlight-color */
+a:link {-webkit-tap-highlight-color: #fcd700;} 
+
+ins {background-color: #fcd700; color: #000; text-decoration: none;}
+mark {background-color: #fcd700; color: #000; font-style: italic; font-weight: bold;}
+
+
+
+/* And here begins the Wordpress fun.
+-------------------------------------------------------------------------------*/
+#navigation, nav{
+	text-align:center;
+	position:fixed;
+	top:0;
+}
+
+
+#menu_button{
+	text-align:center;
+	width:15em;
+	margin:0 auto;
+	background-color: #52BAFF; 
+	color: #072F4A;
+	-webkit-border-bottom-right-radius: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+	-webkit-box-shadow: 0 1px 2px #bbb;
+	padding-top:.3em;
+	padding-bottom:.3em;
+}
+#menu_button:hover { cursor: pointer; }
+#men_link{
+	margin-top:20px;
+}
+
+#the_menu{
+	background: #52BAFF; 
+	padding:1em;
+		-webkit-box-shadow: 0 1px 2px #bbb;
+
+}
+
+#page-wrap {
+	max-width:34em;
+	padding:0 1em;
+	margin: 0 auto;
+	line-height:1.5em;
+}
+
+#header{
+	text-align:center;
+	margin-bottom:1em;
+	color:#aaa;
+	border-bottom:#aaa solid 1px;
+	/*padding:1em 0;*/
+}
+#header h1{
+	font-weight:normal;
+}
+#front_blurb{
+	max-width:20em;
+	margin:0 auto;
+	text-align:center;
+	margin-bottom:2em;
+	font-size:1.2em;
+	line-height:1.4em;
+	text-indent:0;
+}
+#front_blurb > p{
+	text-indent:0;
+	margin-top:1em;
+}
+#header a{
+	text-decoration:none;
+	color:#aaa;
+	
+}
+#book_title{
+	text-align:center;
+	padding:3em 0;
+}
+
+#book_title h1{
+	font-size:2em;
+	line-height:1.2em;
+	padding: 0 0 .3em 0;
+}
+
+.description{
+	font-style:italic;
+	font-size:1.5em;
+	padding-top:.5em;
+}
+
+.chapter_title{
+	font-size:2em;
+	line-height:1.2em;
+	padding: 0 0 .3em 0;
+	text-align:center;
+	margin-bottom:2em;
+}
+#table_of_contents_header, .widget h2{
+	font-weight:bold;
+	font-size:1.5em;
+	line-height:1.7em;
+	padding: 2em 0 1em 0;
+	text-align:center;
+}
+#table_of_contents{
+	margin-bottom:4em;	
+	border-bottom:1px #aaa solid;
+	padding-bottom:2em;
+	text-align:center;
+}
+
+header, article,#table_of_contents{
+	line-height:1.8em;
+}
+
+
+.post {}
+
+.entry-content {}
+.entry-content a {}
+.entry-content a:hover {}
+
+p  + p{
+	text-indent:2.4em;
+}
+
+#meta {}
+.postmetadata {}
+
+#sidebar {text-align:center;
+line-height:1.8em;}
+
+.navgation {}
+.next-posts {}
+.prev-posts {}
+
+#searchform {}
+#s {}
+#searchsubmt {}
+	
+ol.commentlist {list-style: none;}
+ol.commentlist li {}
+ol.commentlist li.alt {}
+ol.commentlist li.bypostauthor {}
+ol.commentlist li.byuser {}
+ol.commentlist li.comment-author-admin {}
+ol.commentlist li.comment {border-bottom: 1px dotted #666; padding: 10px;}
+ol.commentlist li.comment div.comment-author {}
+ol.commentlist li.comment div.vcard {}
+ol.commentlist li.comment div.vcard cite.fn {font-style: normal;}
+ol.commentlist li.comment div.vcard cite.fn a.url {}
+ol.commentlist li.comment div.vcard img.avatar {float:right; margin: 0 0 10px 10px;}
+ol.commentlist li.comment div.vcard img.avatar-32 {}
+ol.commentlist li.comment div.vcard img.photo {}
+ol.commentlist li.comment div.vcard span.says {}
+ol.commentlist li.comment div.commentmetadata {}
+ol.commentlist li.comment div.comment-meta {font-size: 10px;}
+ol.commentlist li.comment div.comment-meta a {color: #ccc;}
+ol.commentlist li.comment p {}
+ol.commentlist li.comment ul {}
+ol.commentlist li.comment div.reply {font-size: 11px;}
+ol.commentlist li.comment div.reply a {font-weight: bold;}
+ol.commentlist li.comment ul.children {list-style: none; margin: 10px 0 0;}
+ol.commentlist li.comment ul.children li {}
+ol.commentlist li.comment ul.children li.alt {}
+ol.commentlist li.comment ul.children li.bypostauthor {}
+ol.commentlist li.comment ul.children li.byuser {}
+ol.commentlist li.comment ul.children li.comment {}
+ol.commentlist li.comment ul.children li.comment-author-admin {}
+ol.commentlist li.comment ul.children li.depth-2 {border-left: 5px solid #555; margin: 0 0 10px 10px;}
+ol.commentlist li.comment ul.children li.depth-3 {border-left: 5px solid #999; margin: 0 0 10px 10px;}
+ol.commentlist li.comment ul.children li.depth-4 {border-left: 5px solid #bbb; margin: 0 0 10px 10px;}
+ol.commentlist li.comment ul.children li.depth-5 {}
+ol.commentlist li.comment ul.children li.odd {}
+ol.commentlist li.even {background: #fff;}
+ol.commentlist li.odd {background: #f6f6f6;}
+ol.commentlist li.parent {border-left: 5px solid #111;}
+ol.commentlist li.thread-alt {}
+ol.commentlist li.thread-even {}
+ol.commentlist li.thread-odd {}
+.pingback{padding:1em;border-bottom:1px dotted #666;}
+
+#footer, footer{
+	margin-top:5em;
+	text-align:center;
+	color:#aaa;
+}
+#footer a{
+	color:#888;
+}
+
+.entry-content h1,.entry-content h2,.entry-content h3,.entry-content h4{
+	margin-top:1.6em;
+	margin-bottom:.6em;
+}
+
+.entry-content ul, .entry-content ol{
+	margin: 1em 0;
+}
+.entry-content li{
+	list-style-type:disc;
+	margin-left:2em;
+}
+#next_chapter{
+	text-align:center;
+	font-size:1.4em;
+}
+
+#bookmark{
+	border:3px dashed black;
+	background:#FFFB00;
+	padding:1em;
+	margin-bottom:2em;
+}
+#bookmark h2{
+	text-align:center;
+	margin-bottom:1em;
+	font-size:1.4em;
+}
+#comments, #respond{
+	text-align:center;
+	padding:2em 0 1em 0;
+}
+blockquote{
+	margin-left:2em;
+	margin-right:2em;
+	font-style:italic;
+}
+#table_of_contents_header, h2{
+	
+	margin-bottom:.6em;
+}
+
+#chapter_blurb{
+	font-style:italic;
+	text-align:center;
+}
+#chapter_blurb p{
+	text-indent:0;
+	margin-top:.2em;
+}
+
+pre{
+	margin-top:1em;
+	margin-bottom:1em;
+	border-width:1px 0 1px 0;
+	border-style:dotted;
+	border-color:#555;
+	padding-top:1em;
+	padding-bottom:1em;
+}
+
+/* Print styles!
+-------------------------------------------------------------------------------*/
+@media print {
+
+
+
+}
+
+
+/* Media queries!
+-------------------------------------------------------------------------------*/
+
+/* Consider this: www.cloudfour.com/css-media-query-for-mobile-is-fools-gold/ */
+@media screen and (min-width: 52em) {
+	#page-wrap {max-width:42em;}
+	
+	header,article,#table_of_contents,#bookmark p{
+		font-size:1.3em;
+	}
+	
+	#header{
+		margin-bottom:4em;
+		padding:1em 0 1em 0;
+	}
+	#book_title h1{
+		font-size:3em;
+		line-height:1.2em;
+		padding: 0 0 .3em 0;
+	}
+	.description{
+		font-size:1.8em;
+		padding-top:1em;
+	}
+	#book_title{
+		margin-bottom:4em;
+	}
+	.chapter_title{
+		font-size:3em;
+		margin-bottom:2em;
+	}
+	#front_blurb{
+		font-size:1.5em;
+		
+	}
+
+}
+
