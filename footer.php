@@ -3,10 +3,10 @@
 				if (get_option("book_wp_copyright")!=""){
 					echo get_option("book_wp_copyright")." <br/> ";
 				}
-			?><a href='http://www.storyhack.com/book-wp'>Book WP Theme</a> is by <a href='http://www.bryceabeattie.com'>Bryce Beattie</a></small>
+			?><a href='https://github.com/menj/book-wp'>Book WP Theme</a> is by <a href='http://www.bryceabeattie.com'>Bryce Beattie</a></small>
 		</footer>
 
-	</div>
+	</section>
 
 	<?php wp_footer(); ?>
 
@@ -24,7 +24,6 @@
 if(get_option("book_wp_analytics")!= ""){
 ?>
 <!-- Asynchronous google analytics; this is the official snippet.
-	 Replace UA-XXXXXX-XX with your site's ID and uncomment to enable.
 	 -->
 <script>
 

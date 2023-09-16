@@ -37,9 +37,9 @@
 					
 						<?php include (TEMPLATEPATH . '/_/inc/meta.php' ); ?>
 
-						<div class="entry">
+						<section class="entry">
 							<?php the_content(); ?>
-						</div>
+						</section>
 
 				</article>
 

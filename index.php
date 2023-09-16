@@ -1,18 +1,18 @@
 <?php get_header(); ?>
-	<div id="book_title">
+	<section id="book_title">
 		<h1><?php bloginfo('name'); ?></h1>
-		<div class="description"><?php bloginfo('description'); ?></div>
-	</div>
-	<div id="bookmark" style="display:none;"></div>
+		<section class="description"><?php bloginfo('description'); ?></section>
+	</section>
+	<section id="bookmark" style="display:none;"></section>
 
 <?php
 if(get_option("book_wp_front_blurb")!=""){
-	echo "<div id='front_blurb'>";
+	echo "<section id='front_blurb'>";
 	echo nl2br(stripslashes(get_option("book_wp_front_blurb")));
-	echo "</div>";
+	echo "</section>";
 }
 ?>
-<div id='table_of_contents_header'>Table of Contents</div>
+<section id='table_of_contents_header'>Table of Contents</section>
 <ul id='table_of_contents'>
 <?php
 $debut = 0;

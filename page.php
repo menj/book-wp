@@ -8,13 +8,13 @@
 
 			<?php include (TEMPLATEPATH . '/_/inc/meta.php' ); ?>
 
-			<div class="entry">
+			<section class="entry">
 
 				<?php the_content(); ?>
 
 				<?php wp_link_pages(array('before' => 'Pages: ', 'next_or_number' => 'number')); ?>
 
-			</div>
+			</section>
 
 			<?php edit_post_link('Edit this entry.', '<p>', '</p>'); ?>
 

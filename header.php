@@ -12,7 +12,6 @@
 	<meta charset="<?php bloginfo('charset'); ?>">
 	
 	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	
 	<?php if (is_search()) { ?>
 	<meta name="robots" content="noindex, nofollow" /> 
@@ -142,14 +141,14 @@
 
 
 	
-	<div id="page-wrap"><!-- not needed? up to you: http://camendesign.com/code/developpeurs_sans_frontieres -->
+	<section id="page-wrap"><!-- not needed? up to you: http://camendesign.com/code/developpeurs_sans_frontieres -->
 
 		<header id="header">
 			<h1><a href="<?php echo get_option('home'); ?>/"><?php bloginfo('name'); ?></a></h1>
 <?php		if(is_single() && (get_option("book_wp_chapter_blurb")!="")){
-	echo "<div id='chapter_blurb'>";
+	echo "<section id='chapter_blurb'>";
 	echo nl2br(stripslashes(get_option("book_wp_chapter_blurb")));
-	echo "</div>";
+	echo "</section>";
 }?>
 		</header>
 

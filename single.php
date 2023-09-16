@@ -8,7 +8,7 @@
 			</script>	
 			<h1 class="entry-title chapter_title"><?php the_title(); ?></h1>
 
-			<div class="entry-content">
+			<section class="entry-content">
 				
 				<?php the_content(); ?>
 
@@ -16,10 +16,10 @@
 				
 				
 
-			</div>
-			<?php next_post_link('<br/><br/><div id="next_chapter">Next Chapter: %link</div>'); ?>
+			</section>
+			<?php next_post_link('<br/><br/><section id="next_chapter">Next Chapter: %link</section>'); ?>
 
-			<?php edit_post_link('Edit this entry','<div style="text-align:center">','</div>'); ?>
+			<?php edit_post_link('Edit this entry','<section style="text-align:center">','</section>'); ?>
 			
 		</article>
 
