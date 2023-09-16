@@ -6,6 +6,7 @@ if (isset($_POST["update_settings"])) {
 	update_option("book_wp_comments",$_POST['book_wp_comments']);
 	update_option("book_wp_front_blurb",stripslashes($_POST['book_wp_front_blurb']));
 	update_option("book_wp_chapter_blurb",stripslashes($_POST['book_wp_chapter_blurb']));
+	// Removed: 
 	update_option("book_wp_copyright",stripslashes($_POST['book_wp_copyright']));
 
 	echo '<div id="message" class="updated">Settings saved</div>';

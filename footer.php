@@ -3,7 +3,7 @@
 				if (get_option("book_wp_copyright")!=""){
 					echo get_option("book_wp_copyright")." <br/> ";
 				}
-			?><a href='https://github.com/menj/book-wp'>Book WP Theme</a> is by <a href='http://www.bryceabeattie.com'>Bryce Beattie</a></small>
+			?><a href='https://github.com/menj/book-wp'>Book WP Theme</a> is updated by <a href='https://menj.net'>MENJ</a></small>
 		</footer>
 
 	</section>
