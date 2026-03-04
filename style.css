@@ -1,0 +1,22 @@
+/*
+Theme Name: Book WP
+Theme URI: https://github.com/menj/book-wp
+Description: A clean, accessible WordPress theme for publishing online books. Supports chapter ordering, table of contents, optional Custom Post Type mode, WCAG 2.2 AA compliance, and Customizer-based settings.
+Author: MENJ
+Author URI: https://menj.net
+Version: 2.0.0
+Requires at least: 6.0
+Tested up to: 6.7
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: book-wp
+Update URI: false
+Tags: one-column, custom-colors, custom-menu, translation-ready, accessibility-ready, blog
+*/
+
+/*
+ * Book WP 2.0.0
+ * All visual styles are in assets/css/book-wp.css.
+ * This file contains only the required WordPress theme headers.
+ */

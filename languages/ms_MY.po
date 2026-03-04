@@ -1,0 +1,371 @@
+# Malay (ms_MY) translation for Book WP
+# Copyright (C) 2024 MENJ
+# This file is distributed under the same license as the Book WP theme.
+#
+# Translators:
+# Community Contributors <https://github.com/menj/book-wp>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Book WP 2.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/menj/book-wp/issues\n"
+"POT-Creation-Date: 2026-03-01 18:17+0000\n"
+"PO-Revision-Date: 2026-03-01 18:17+0000\n"
+"Last-Translator: Community Contributors <https://github.com/menj/book-wp>\n"
+"Language-Team: Malay <https://github.com/menj/book-wp>\n"
+"Language: ms_MY\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Book WP build script\n"
+"X-Domain: book-wp\n"
+
+#: inc/admin.php:64
+msgid "<strong>Book WP:</strong> %1$d chapter post is missing the <code>chapter_number</code> custom field. Without it, chapters fall back to date ordering. <a href=\"%2$s\">Edit posts</a>"
+msgid_plural "<strong>Book WP:</strong> %1$d chapter posts are missing the <code>chapter_number</code> custom field. Without it, chapters fall back to date ordering. <a href=\"%2$s\">Edit posts</a>"
+msgstr[0] "<strong>Book WP:</strong> %1\$d catatan bab tiada medan tersuai <code>chapter_number</code>. Tanpa ini, bab disusun mengikut tarikh. <a href=\"%2\$s\">Edit catatan</a>"
+
+#: 404.php:19
+msgid "Page Not Found"
+msgstr "Halaman Tidak Dijumpai"
+
+#: 404.php:23
+msgid "The page you were looking for could not be found. It may have been moved, deleted, or perhaps the URL was mistyped."
+msgstr "Halaman yang anda cari tidak dapat dijumpai. Ia mungkin telah dipindahkan, dipadam, atau URL telah ditaip dengan salah."
+
+#: 404.php:26
+msgid "Return to the Table of Contents"
+msgstr "Kembali ke Jadual Kandungan"
+
+#: archive-chapter.php:19 inc/pro-mode.php:51
+msgid "All Chapters"
+msgstr "Semua Bab"
+
+#: footer.php:28
+msgid "Powered by %s"
+msgstr "Dikuasakan oleh %s"
+
+#: header.php:15
+msgid "Skip to main content"
+msgstr "Langkau ke kandungan utama"
+
+#: inc/admin.php:107
+msgid "You do not have sufficient permissions to access this page."
+msgstr "Anda tidak mempunyai kebenaran yang mencukupi untuk mengakses halaman ini."
+
+#: inc/admin.php:119
+msgid "Book WP settings have moved to the <a href=\"%s\">Customizer → Book Settings</a>. No settings are saved here."
+msgstr "Tetapan Book WP telah dipindahkan ke <a href=\"%s\">Penyesuai → Tetapan Buku</a>. Tiada tetapan disimpan di sini."
+
+#: inc/admin.php:128
+msgid "Open Customizer → Book Settings"
+msgstr "Buka Penyesuai → Tetapan Buku"
+
+#: inc/admin.php:93 inc/admin.php:94 inc/admin.php:112
+msgid "Book WP Options"
+msgstr "Pilihan Book WP"
+
+#: inc/customizer.php:113
+msgid "Front Page Blurb"
+msgstr "Ringkasan Halaman Hadapan"
+
+#: inc/customizer.php:114
+msgid "Optional text shown above the Table of Contents on the front page. HTML is allowed."
+msgstr "Teks pilihan yang dipaparkan di atas Jadual Kandungan pada halaman hadapan. HTML dibenarkan."
+
+#: inc/customizer.php:132
+msgid "Chapter Header Blurb"
+msgstr "Ringkasan Pengepala Bab"
+
+#: inc/customizer.php:133
+msgid "Optional text shown in the site header on chapter pages (e.g. series name or tagline). HTML is allowed."
+msgstr "Teks pilihan yang dipaparkan dalam pengepala laman pada halaman bab (cth: nama siri atau tagline). HTML dibenarkan."
+
+#: inc/customizer.php:151
+msgid "Copyright Notice"
+msgstr "Notis Hak Cipta"
+
+#: inc/customizer.php:152
+msgid "Displayed in the footer. Plain text only. To include a copyright symbol type: (c)"
+msgstr "Dipaparkan dalam pengaki. Teks biasa sahaja. Untuk memasukkan simbol hak cipta, taip: (c)"
+
+#: inc/customizer.php:170
+msgid "Enable Pro Mode (Custom Post Types)"
+msgstr "Aktifkan Mod Pro (Jenis Catatan Tersuai)"
+
+#: inc/customizer.php:171
+msgid "When enabled, chapters become a Custom Post Type grouped under a \"Book\" taxonomy. After toggling, visit Settings → Permalinks to flush rewrite rules."
+msgstr "Apabila diaktifkan, bab-bab menjadi Jenis Catatan Tersuai yang dikumpulkan di bawah taksonomi \"Buku\". Selepas mengaktifkan, lawati Tetapan → Pautan Kekal untuk menyegarkan peraturan tulis semula."
+
+#: inc/customizer.php:27
+msgid "Book Settings"
+msgstr "Tetapan Buku"
+
+#: inc/customizer.php:28
+msgid "Configure the appearance and behavior of your online book."
+msgstr "Konfigurasi penampilan dan tingkah laku buku dalam talian anda."
+
+#: inc/customizer.php:45
+msgid "Book Font"
+msgstr "Fon Buku"
+
+#: inc/customizer.php:46
+msgid "Choose the typeface used for reading. Georgia is a standard web-safe font; others are loaded from Google Fonts (requires internet connection)."
+msgstr "Pilih jenis huruf yang digunakan untuk membaca. Georgia ialah fon web standard; yang lain dimuatkan dari Google Fonts (memerlukan sambungan internet)."
+
+#: inc/customizer.php:50
+msgid "Georgia (built-in)"
+msgstr "Georgia (terbina dalam)"
+
+#: inc/customizer.php:51
+msgid "Vollkorn"
+msgstr "Vollkorn"
+
+#: inc/customizer.php:52
+msgid "Arvo"
+msgstr "Arvo"
+
+#: inc/customizer.php:53
+msgid "Maven Pro"
+msgstr "Maven Pro"
+
+#: inc/customizer.php:54
+msgid "Ubuntu"
+msgstr "Ubuntu"
+
+#: inc/customizer.php:71
+msgid "Color Scheme"
+msgstr "Skim Warna"
+
+#: inc/customizer.php:72
+msgid "All color schemes meet WCAG 2.2 AA contrast requirements."
+msgstr "Semua skim warna memenuhi keperluan kontras WCAG 2.2 AA."
+
+#: inc/customizer.php:76
+msgid "Black and White"
+msgstr "Hitam dan Putih"
+
+#: inc/customizer.php:77
+msgid "Cream and Brown"
+msgstr "Krim dan Perang"
+
+#: inc/customizer.php:94
+msgid "Show Comments on Chapters"
+msgstr "Papar Komen pada Bab"
+
+#: inc/customizer.php:95
+msgid "Enable to display the comment section below each chapter."
+msgstr "Aktifkan untuk memaparkan bahagian komen di bawah setiap bab."
+
+#: inc/pro-mode.php:41
+msgctxt "post type general name"
+msgid "Chapters"
+msgstr "Bab"
+
+#: inc/pro-mode.php:42
+msgctxt "post type singular name"
+msgid "Chapter"
+msgstr "Bab"
+
+#: inc/pro-mode.php:43 inc/pro-mode.php:44
+msgid "Add New Chapter"
+msgstr "Tambah Bab Baharu"
+
+#: inc/pro-mode.php:45
+msgid "Edit Chapter"
+msgstr "Edit Bab"
+
+#: inc/pro-mode.php:46
+msgid "New Chapter"
+msgstr "Bab Baharu"
+
+#: inc/pro-mode.php:47
+msgid "View Chapter"
+msgstr "Lihat Bab"
+
+#: inc/pro-mode.php:48
+msgid "Search Chapters"
+msgstr "Cari Bab"
+
+#: inc/pro-mode.php:49
+msgid "No chapters found."
+msgstr "Tiada bab dijumpai."
+
+#: inc/pro-mode.php:50
+msgid "No chapters found in Trash."
+msgstr "Tiada bab dijumpai dalam Tong Sampah."
+
+#: inc/pro-mode.php:67
+msgctxt "taxonomy general name"
+msgid "Books"
+msgstr "Buku"
+
+#: inc/pro-mode.php:68
+msgctxt "taxonomy singular name"
+msgid "Book"
+msgstr "Buku"
+
+#: inc/pro-mode.php:69
+msgid "Search Books"
+msgstr "Cari Buku"
+
+#: inc/pro-mode.php:70
+msgid "All Books"
+msgstr "Semua Buku"
+
+#: inc/pro-mode.php:71
+msgid "Edit Book"
+msgstr "Edit Buku"
+
+#: inc/pro-mode.php:72
+msgid "Update Book"
+msgstr "Kemaskini Buku"
+
+#: inc/pro-mode.php:73
+msgid "Add New Book"
+msgstr "Tambah Buku Baharu"
+
+#: inc/pro-mode.php:74
+msgid "New Book Name"
+msgstr "Nama Buku Baharu"
+
+#: inc/pro-mode.php:75 templates/page-toc.php:44
+msgid "Books"
+msgstr "Buku"
+
+#: inc/setup.php:132
+msgid "Sidebar Widgets"
+msgstr "Widget Bar Sisi"
+
+#: inc/setup.php:134
+msgid "Widgets displayed in the sidebar."
+msgstr "Widget yang dipaparkan dalam bar sisi."
+
+#: inc/setup.php:67
+msgid "Primary Navigation"
+msgstr "Navigasi Utama"
+
+#: search.php:23
+msgid "Search Results for: %s"
+msgstr "Keputusan Carian untuk: %s"
+
+#: search.php:36
+msgid "Search results pages"
+msgstr "Halaman keputusan carian"
+
+#: search.php:40
+msgid "Previous page"
+msgstr "Halaman sebelumnya"
+
+#: search.php:41
+msgid "Next page"
+msgstr "Halaman seterusnya"
+
+#: search.php:42 template-parts/content/content-chapter.php:42
+msgid "Page"
+msgstr "Halaman"
+
+#: search.php:55
+msgid "Nothing found for &#8220;%s&#8221;. Try a different search."
+msgstr "Tiada hasil dijumpai untuk “%s”. Cuba carian yang berbeza."
+
+#: searchform.php:16
+msgid "Search for:"
+msgstr "Cari:"
+
+#: searchform.php:22
+msgid "Search&hellip;"
+msgstr "Cari…"
+
+#: searchform.php:28
+msgid "Search"
+msgstr "Cari"
+
+#: sidebar.php:17
+msgid "Sidebar"
+msgstr "Bar Sisi"
+
+#: taxonomy-book.php:31
+msgid "Book"
+msgstr "Buku"
+
+#: taxonomy-book.php:41
+msgid "Published %d"
+msgstr "Diterbitkan pada %d"
+
+#: taxonomy-book.php:72 taxonomy-book.php:73 template-parts/navigation/toc.php:32 template-parts/navigation/toc.php:33
+msgid "Table of Contents"
+msgstr "Jadual Kandungan"
+
+#: taxonomy-book.php:85
+msgid "No chapters found for this book."
+msgstr "Tiada bab dijumpai untuk buku ini."
+
+#: template-parts/content/content-chapter.php:24
+msgid "Chapter %s"
+msgstr "Bab %s"
+
+#: template-parts/content/content-chapter.php:40 template-parts/content/content-page.php:24 template-parts/content/content.php:32
+msgid "Page navigation"
+msgstr "Navigasi halaman"
+
+#: template-parts/content/content-chapter.php:40 template-parts/content/content-page.php:24 template-parts/content/content.php:32
+msgid "Pages:"
+msgstr "Halaman:"
+
+#: template-parts/content/content-chapter.php:51
+msgid "Edit this chapter"
+msgstr "Edit bab ini"
+
+#: template-parts/content/content-page.php:32
+msgid "Edit this page"
+msgstr "Edit halaman ini"
+
+#: template-parts/content/content.php:43
+msgid "Edit this entry"
+msgstr "Edit entri ini"
+
+#: template-parts/global/metadata.php:17
+msgid "Published %s"
+msgstr "Diterbitkan pada %s"
+
+#: template-parts/global/metadata.php:30
+msgid " by %s"
+msgstr " oleh %s"
+
+#: template-parts/navigation/chapter-navigation.php:49
+msgid "Chapter navigation"
+msgstr "Navigasi bab"
+
+#: template-parts/navigation/chapter-navigation.php:58
+msgid "Previous"
+msgstr "Sebelumnya"
+
+#: template-parts/navigation/chapter-navigation.php:59
+msgid "Previous chapter:"
+msgstr "Bab sebelumnya:"
+
+#: template-parts/navigation/chapter-navigation.php:70
+msgid "Next"
+msgstr "Seterusnya"
+
+#: template-parts/navigation/chapter-navigation.php:71
+msgid "Next chapter:"
+msgstr "Bab seterusnya:"
+
+#: template-parts/navigation/chapter-navigation.php:80
+msgid "Back to Table of Contents"
+msgstr "Kembali ke Jadual Kandungan"
+
+#: templates/page-landing.php:38
+msgid "Start reading"
+msgstr "Mula membaca"
+
+#: templates/page-landing.php:40
+msgid "Read Now →"
+msgstr "Baca Sekarang →"
+
+#: templates/page-toc.php:43
+msgid "Books list"
+msgstr "Senarai buku"

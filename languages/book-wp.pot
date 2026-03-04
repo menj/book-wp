@@ -1,0 +1,369 @@
+# Book WP Translation Template
+# Copyright (C) 2024 MENJ
+# This file is distributed under the same license as the Book WP theme.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Book WP 2.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/menj/book-wp/issues\n"
+"POT-Creation-Date: 2026-03-01 18:09+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Book WP build script\n"
+"X-Domain: book-wp\n"
+
+#: inc/admin.php:64
+msgid "<strong>Book WP:</strong> %1$d chapter post is missing the <code>chapter_number</code> custom field. Without it, chapters fall back to date ordering. <a href=\"%2$s\">Edit posts</a>"
+msgid_plural "<strong>Book WP:</strong> %1$d chapter posts are missing the <code>chapter_number</code> custom field. Without it, chapters fall back to date ordering. <a href=\"%2$s\">Edit posts</a>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: 404.php:19
+msgid "Page Not Found"
+msgstr ""
+
+#: 404.php:23
+msgid "The page you were looking for could not be found. It may have been moved, deleted, or perhaps the URL was mistyped."
+msgstr ""
+
+#: 404.php:26
+msgid "Return to the Table of Contents"
+msgstr ""
+
+#: archive-chapter.php:19 inc/pro-mode.php:51
+msgid "All Chapters"
+msgstr ""
+
+#: footer.php:28
+msgid "Powered by %s"
+msgstr ""
+
+#: header.php:15
+msgid "Skip to main content"
+msgstr ""
+
+#: inc/admin.php:107
+msgid "You do not have sufficient permissions to access this page."
+msgstr ""
+
+#: inc/admin.php:119
+msgid "Book WP settings have moved to the <a href=\"%s\">Customizer → Book Settings</a>. No settings are saved here."
+msgstr ""
+
+#: inc/admin.php:128
+msgid "Open Customizer → Book Settings"
+msgstr ""
+
+#: inc/admin.php:93 inc/admin.php:94 inc/admin.php:112
+msgid "Book WP Options"
+msgstr ""
+
+#: inc/customizer.php:113
+msgid "Front Page Blurb"
+msgstr ""
+
+#: inc/customizer.php:114
+msgid "Optional text shown above the Table of Contents on the front page. HTML is allowed."
+msgstr ""
+
+#: inc/customizer.php:132
+msgid "Chapter Header Blurb"
+msgstr ""
+
+#: inc/customizer.php:133
+msgid "Optional text shown in the site header on chapter pages (e.g. series name or tagline). HTML is allowed."
+msgstr ""
+
+#: inc/customizer.php:151
+msgid "Copyright Notice"
+msgstr ""
+
+#: inc/customizer.php:152
+msgid "Displayed in the footer. Plain text only. To include a copyright symbol type: (c)"
+msgstr ""
+
+#: inc/customizer.php:170
+msgid "Enable Pro Mode (Custom Post Types)"
+msgstr ""
+
+#: inc/customizer.php:171
+msgid "When enabled, chapters become a Custom Post Type grouped under a \"Book\" taxonomy. After toggling, visit Settings → Permalinks to flush rewrite rules."
+msgstr ""
+
+#: inc/customizer.php:27
+msgid "Book Settings"
+msgstr ""
+
+#: inc/customizer.php:28
+msgid "Configure the appearance and behavior of your online book."
+msgstr ""
+
+#: inc/customizer.php:45
+msgid "Book Font"
+msgstr ""
+
+#: inc/customizer.php:46
+msgid "Choose the typeface used for reading. Georgia is a standard web-safe font; others are loaded from Google Fonts (requires internet connection)."
+msgstr ""
+
+#: inc/customizer.php:50
+msgid "Georgia (built-in)"
+msgstr ""
+
+#: inc/customizer.php:51
+msgid "Vollkorn"
+msgstr ""
+
+#: inc/customizer.php:52
+msgid "Arvo"
+msgstr ""
+
+#: inc/customizer.php:53
+msgid "Maven Pro"
+msgstr ""
+
+#: inc/customizer.php:54
+msgid "Ubuntu"
+msgstr ""
+
+#: inc/customizer.php:71
+msgid "Color Scheme"
+msgstr ""
+
+#: inc/customizer.php:72
+msgid "All color schemes meet WCAG 2.2 AA contrast requirements."
+msgstr ""
+
+#: inc/customizer.php:76
+msgid "Black and White"
+msgstr ""
+
+#: inc/customizer.php:77
+msgid "Cream and Brown"
+msgstr ""
+
+#: inc/customizer.php:94
+msgid "Show Comments on Chapters"
+msgstr ""
+
+#: inc/customizer.php:95
+msgid "Enable to display the comment section below each chapter."
+msgstr ""
+
+#: inc/pro-mode.php:41
+msgctxt "post type general name"
+msgid "Chapters"
+msgstr ""
+
+#: inc/pro-mode.php:42
+msgctxt "post type singular name"
+msgid "Chapter"
+msgstr ""
+
+#: inc/pro-mode.php:43 inc/pro-mode.php:44
+msgid "Add New Chapter"
+msgstr ""
+
+#: inc/pro-mode.php:45
+msgid "Edit Chapter"
+msgstr ""
+
+#: inc/pro-mode.php:46
+msgid "New Chapter"
+msgstr ""
+
+#: inc/pro-mode.php:47
+msgid "View Chapter"
+msgstr ""
+
+#: inc/pro-mode.php:48
+msgid "Search Chapters"
+msgstr ""
+
+#: inc/pro-mode.php:49
+msgid "No chapters found."
+msgstr ""
+
+#: inc/pro-mode.php:50
+msgid "No chapters found in Trash."
+msgstr ""
+
+#: inc/pro-mode.php:67
+msgctxt "taxonomy general name"
+msgid "Books"
+msgstr ""
+
+#: inc/pro-mode.php:68
+msgctxt "taxonomy singular name"
+msgid "Book"
+msgstr ""
+
+#: inc/pro-mode.php:69
+msgid "Search Books"
+msgstr ""
+
+#: inc/pro-mode.php:70
+msgid "All Books"
+msgstr ""
+
+#: inc/pro-mode.php:71
+msgid "Edit Book"
+msgstr ""
+
+#: inc/pro-mode.php:72
+msgid "Update Book"
+msgstr ""
+
+#: inc/pro-mode.php:73
+msgid "Add New Book"
+msgstr ""
+
+#: inc/pro-mode.php:74
+msgid "New Book Name"
+msgstr ""
+
+#: inc/pro-mode.php:75 templates/page-toc.php:44
+msgid "Books"
+msgstr ""
+
+#: inc/setup.php:132
+msgid "Sidebar Widgets"
+msgstr ""
+
+#: inc/setup.php:134
+msgid "Widgets displayed in the sidebar."
+msgstr ""
+
+#: inc/setup.php:67
+msgid "Primary Navigation"
+msgstr ""
+
+#: search.php:23
+msgid "Search Results for: %s"
+msgstr ""
+
+#: search.php:36
+msgid "Search results pages"
+msgstr ""
+
+#: search.php:40
+msgid "Previous page"
+msgstr ""
+
+#: search.php:41
+msgid "Next page"
+msgstr ""
+
+#: search.php:42 template-parts/content/content-chapter.php:42
+msgid "Page"
+msgstr ""
+
+#: search.php:55
+msgid "Nothing found for &#8220;%s&#8221;. Try a different search."
+msgstr ""
+
+#: searchform.php:16
+msgid "Search for:"
+msgstr ""
+
+#: searchform.php:22
+msgid "Search&hellip;"
+msgstr ""
+
+#: searchform.php:28
+msgid "Search"
+msgstr ""
+
+#: sidebar.php:17
+msgid "Sidebar"
+msgstr ""
+
+#: taxonomy-book.php:31
+msgid "Book"
+msgstr ""
+
+#: taxonomy-book.php:41
+msgid "Published %d"
+msgstr ""
+
+#: taxonomy-book.php:72 taxonomy-book.php:73 template-parts/navigation/toc.php:32 template-parts/navigation/toc.php:33
+msgid "Table of Contents"
+msgstr ""
+
+#: taxonomy-book.php:85
+msgid "No chapters found for this book."
+msgstr ""
+
+#: template-parts/content/content-chapter.php:24
+msgid "Chapter %s"
+msgstr ""
+
+#: template-parts/content/content-chapter.php:40 template-parts/content/content-page.php:24 template-parts/content/content.php:32
+msgid "Page navigation"
+msgstr ""
+
+#: template-parts/content/content-chapter.php:40 template-parts/content/content-page.php:24 template-parts/content/content.php:32
+msgid "Pages:"
+msgstr ""
+
+#: template-parts/content/content-chapter.php:51
+msgid "Edit this chapter"
+msgstr ""
+
+#: template-parts/content/content-page.php:32
+msgid "Edit this page"
+msgstr ""
+
+#: template-parts/content/content.php:43
+msgid "Edit this entry"
+msgstr ""
+
+#: template-parts/global/metadata.php:17
+msgid "Published %s"
+msgstr ""
+
+#: template-parts/global/metadata.php:30
+msgid " by %s"
+msgstr ""
+
+#: template-parts/navigation/chapter-navigation.php:49
+msgid "Chapter navigation"
+msgstr ""
+
+#: template-parts/navigation/chapter-navigation.php:58
+msgid "Previous"
+msgstr ""
+
+#: template-parts/navigation/chapter-navigation.php:59
+msgid "Previous chapter:"
+msgstr ""
+
+#: template-parts/navigation/chapter-navigation.php:70
+msgid "Next"
+msgstr ""
+
+#: template-parts/navigation/chapter-navigation.php:71
+msgid "Next chapter:"
+msgstr ""
+
+#: template-parts/navigation/chapter-navigation.php:80
+msgid "Back to Table of Contents"
+msgstr ""
+
+#: templates/page-landing.php:38
+msgid "Start reading"
+msgstr ""
+
+#: templates/page-landing.php:40
+msgid "Read Now →"
+msgstr ""
+
+#: templates/page-toc.php:43
+msgid "Books list"
+msgstr ""

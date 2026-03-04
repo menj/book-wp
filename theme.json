@@ -1,0 +1,315 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"settings": {
+		"appearanceTools": true,
+		"useRootPaddingAwareAlignments": true,
+		"layout": {
+			"contentSize": "720px",
+			"wideSize": "960px"
+		},
+		"color": {
+			"background": true,
+			"text": true,
+			"link": true,
+			"heading": true,
+			"button": true,
+			"defaultPalette": false,
+			"defaultGradients": false,
+			"defaultDuotone": false,
+			"palette": [
+				{
+					"slug": "foreground",
+					"color": "#1a1a1a",
+					"name": "Foreground"
+				},
+				{
+					"slug": "background",
+					"color": "#ffffff",
+					"name": "Background"
+				},
+				{
+					"slug": "surface",
+					"color": "#f8f8f8",
+					"name": "Surface"
+				},
+				{
+					"slug": "border",
+					"color": "#d0d0d0",
+					"name": "Border"
+				},
+				{
+					"slug": "muted",
+					"color": "#555555",
+					"name": "Muted Text"
+				},
+				{
+					"slug": "accent",
+					"color": "#0044cc",
+					"name": "Accent / Link"
+				},
+				{
+					"slug": "cream-bg",
+					"color": "#fdf6e3",
+					"name": "Cream Background"
+				},
+				{
+					"slug": "cream-fg",
+					"color": "#2c1810",
+					"name": "Cream Foreground"
+				},
+				{
+					"slug": "brown-accent",
+					"color": "#7a3b1e",
+					"name": "Brown Accent"
+				}
+			]
+		},
+		"typography": {
+			"fluid": false,
+			"defaultFontSizes": false,
+			"customFontSize": true,
+			"fontSizes": [
+				{
+					"slug": "small",
+					"size": "0.9375rem",
+					"name": "Small"
+				},
+				{
+					"slug": "medium",
+					"size": "1.125rem",
+					"name": "Medium (Base)"
+				},
+				{
+					"slug": "large",
+					"size": "1.25rem",
+					"name": "Large"
+				},
+				{
+					"slug": "x-large",
+					"size": "1.5rem",
+					"name": "X-Large"
+				},
+				{
+					"slug": "xx-large",
+					"size": "2rem",
+					"name": "XX-Large"
+				}
+			],
+			"fontFamilies": [
+				{
+					"slug": "georgia",
+					"name": "Georgia",
+					"fontFamily": "Georgia, 'Times New Roman', serif"
+				},
+				{
+					"slug": "vollkorn",
+					"name": "Vollkorn",
+					"fontFamily": "'Vollkorn', Georgia, serif"
+				},
+				{
+					"slug": "arvo",
+					"name": "Arvo",
+					"fontFamily": "'Arvo', Georgia, serif"
+				},
+				{
+					"slug": "maven-pro",
+					"name": "Maven Pro",
+					"fontFamily": "'Maven Pro', sans-serif"
+				},
+				{
+					"slug": "ubuntu",
+					"name": "Ubuntu",
+					"fontFamily": "'Ubuntu', sans-serif"
+				},
+				{
+					"slug": "system-ui",
+					"name": "System UI",
+					"fontFamily": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif"
+				}
+			]
+		},
+		"spacing": {
+			"defaultSpacingSizes": false,
+			"spacingSizes": [
+				{ "slug": "xs",  "size": "0.25rem", "name": "XS" },
+				{ "slug": "sm",  "size": "0.5rem",  "name": "SM" },
+				{ "slug": "md",  "size": "1rem",    "name": "MD" },
+				{ "slug": "lg",  "size": "1.5rem",  "name": "LG" },
+				{ "slug": "xl",  "size": "2rem",    "name": "XL" },
+				{ "slug": "2xl", "size": "3rem",    "name": "2XL" },
+				{ "slug": "3xl", "size": "4rem",    "name": "3XL" }
+			],
+			"padding": true,
+			"margin": true,
+			"blockGap": true
+		},
+		"border": {
+			"color": true,
+			"radius": true,
+			"style": true,
+			"width": true
+		},
+		"blocks": {
+			"core/navigation": {
+				"typography": {
+					"customFontSize": false
+				}
+			}
+		},
+		"custom": {
+			"maxWidth": {
+				"content": "720px",
+				"wide": "960px"
+			},
+			"lineHeight": {
+				"body": "1.7",
+				"heading": "1.25"
+			}
+		}
+	},
+	"styles": {
+		"color": {
+			"background": "#ffffff",
+			"text": "#1a1a1a"
+		},
+		"typography": {
+			"fontFamily": "Georgia, 'Times New Roman', serif",
+			"fontSize": "1.125rem",
+			"lineHeight": "1.7"
+		},
+		"spacing": {
+			"blockGap": "1.5rem"
+		},
+		"elements": {
+			"link": {
+				"color": {
+					"text": "#0044cc"
+				},
+				"typography": {
+					"textDecoration": "underline"
+				},
+				":hover": {
+					"color": {
+						"text": "#002288"
+					}
+				}
+			},
+			"h1": {
+				"typography": {
+					"fontSize": "2.5rem",
+					"lineHeight": "1.25",
+					"fontWeight": "700"
+				}
+			},
+			"h2": {
+				"typography": {
+					"fontSize": "2rem",
+					"lineHeight": "1.25",
+					"fontWeight": "700"
+				}
+			},
+			"h3": {
+				"typography": {
+					"fontSize": "1.5rem",
+					"lineHeight": "1.25",
+					"fontWeight": "700"
+				}
+			},
+			"h4": {
+				"typography": {
+					"fontSize": "1.25rem",
+					"fontWeight": "700"
+				}
+			},
+			"button": {
+				"color": {
+					"background": "#0044cc",
+					"text": "#ffffff"
+				},
+				"typography": {
+					"fontFamily": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif",
+					"fontWeight": "600"
+				},
+				"border": {
+					"radius": "4px"
+				}
+			}
+		},
+		"blocks": {
+			"core/paragraph": {
+				"spacing": {
+					"margin": {
+						"bottom": "1.5rem"
+					}
+				}
+			},
+			"core/image": {
+				"spacing": {
+					"margin": {
+						"bottom": "1.5rem"
+					}
+				}
+			},
+			"core/quote": {
+				"border": {
+					"color": "#d0d0d0",
+					"style": "solid",
+					"width": "0 0 0 4px"
+				},
+				"spacing": {
+					"padding": {
+						"left": "1.5rem",
+						"top": "1rem",
+						"bottom": "1rem"
+					}
+				},
+				"typography": {
+					"fontStyle": "italic"
+				}
+			},
+			"core/separator": {
+				"color": {
+					"text": "#d0d0d0"
+				}
+			},
+			"core/code": {
+				"typography": {
+					"fontSize": "0.9em"
+				},
+				"spacing": {
+					"padding": {
+						"top": "1rem",
+						"bottom": "1rem",
+						"left": "1.5rem",
+						"right": "1.5rem"
+					}
+				}
+			},
+			"core/navigation": {
+				"typography": {
+					"fontFamily": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif",
+					"fontSize": "0.9375rem"
+				}
+			}
+		}
+	},
+	"templateParts": [],
+	"customTemplates": [
+		{
+			"name": "page-toc",
+			"title": "Table of Contents",
+			"postTypes": [ "page" ]
+		},
+		{
+			"name": "page-blank",
+			"title": "Blank Page",
+			"postTypes": [ "page" ]
+		},
+		{
+			"name": "page-landing",
+			"title": "Book Landing Page",
+			"postTypes": [ "page" ]
+		}
+	]
+}

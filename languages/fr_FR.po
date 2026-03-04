@@ -1,0 +1,374 @@
+# French (fr_FR) translation for Book WP
+# Copyright (C) 2024 MENJ
+# This file is distributed under the same license as the Book WP theme.
+#
+# Translators:
+# French translation — see https://github.com/menj/book-wp to contribute
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Book WP 2.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/menj/book-wp/issues\n"
+"POT-Creation-Date: 2026-03-01 18:10+0000\n"
+"PO-Revision-Date: 2026-03-01 18:17+0000
+"
+"Last-Translator: Community Contributors <https://github.com/menj/book-wp>\n"
+"Language-Team: French <https://github.com/menj/book-wp>\n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Book WP build script\n"
+"X-Domain: book-wp\n"
+
+
+#: inc/admin.php:64
+msgid "<strong>Book WP:</strong> %1$d chapter post is missing the <code>chapter_number</code> custom field. Without it, chapters fall back to date ordering. <a href=\"%2$s\">Edit posts</a>"
+msgid_plural "<strong>Book WP:</strong> %1$d chapter posts are missing the <code>chapter_number</code> custom field. Without it, chapters fall back to date ordering. <a href=\"%2$s\">Edit posts</a>"
+msgstr[0] "<strong>Book WP :</strong> %1$d article chapitre n'a pas le champ personnalisé <code>chapter_number</code>. Sans lui, les chapitres sont classés par date. <a href=\"%2$s\">Modifier les articles</a>"
+msgstr[1] "<strong>Book WP :</strong> %1$d articles chapitres n'ont pas le champ personnalisé <code>chapter_number</code>. Sans lui, les chapitres sont classés par date. <a href=\"%2$s\">Modifier les articles</a>"
+
+#: 404.php:19
+msgid "Page Not Found"
+msgstr "Page introuvable"
+
+#: 404.php:23
+msgid "The page you were looking for could not be found. It may have been moved, deleted, or perhaps the URL was mistyped."
+msgstr "La page que vous recherchez est introuvable. Elle a peut-être été déplacée, supprimée ou l'URL a été mal saisie."
+
+#: 404.php:26
+msgid "Return to the Table of Contents"
+msgstr "Retourner à la table des matières"
+
+#: archive-chapter.php:19 inc/pro-mode.php:51
+msgid "All Chapters"
+msgstr "Tous les chapitres"
+
+#: footer.php:28
+msgid "Powered by %s"
+msgstr "Propulsé par %s"
+
+#: header.php:15
+msgid "Skip to main content"
+msgstr "Passer au contenu principal"
+
+#: inc/admin.php:107
+msgid "You do not have sufficient permissions to access this page."
+msgstr "Vous ne disposez pas des autorisations suffisantes pour accéder à cette page."
+
+#: inc/admin.php:119
+msgid "Book WP settings have moved to the <a href=\"%s\">Customizer → Book Settings</a>. No settings are saved here."
+msgstr "Les réglages de Book WP ont été déplacés vers <a href=\"%s\">l'Outil de personnalisation → Réglages du livre</a>. Aucun réglage n'est enregistré ici."
+
+#: inc/admin.php:128
+msgid "Open Customizer → Book Settings"
+msgstr "Ouvrir l'outil de personnalisation → Réglages du livre"
+
+#: inc/admin.php:93 inc/admin.php:94 inc/admin.php:112
+msgid "Book WP Options"
+msgstr "Options Book WP"
+
+#: inc/customizer.php:113
+msgid "Front Page Blurb"
+msgstr "Texte d'accroche (page d'accueil)"
+
+#: inc/customizer.php:114
+msgid "Optional text shown above the Table of Contents on the front page. HTML is allowed."
+msgstr "Texte facultatif affiché au-dessus de la table des matières sur la page d'accueil. Le HTML est autorisé."
+
+#: inc/customizer.php:132
+msgid "Chapter Header Blurb"
+msgstr "Texte d'en-tête des chapitres"
+
+#: inc/customizer.php:133
+msgid "Optional text shown in the site header on chapter pages (e.g. series name or tagline). HTML is allowed."
+msgstr "Texte facultatif affiché dans l'en-tête du site sur les pages de chapitres (ex. : nom de série ou accroche). Le HTML est autorisé."
+
+#: inc/customizer.php:151
+msgid "Copyright Notice"
+msgstr "Mention de droits d'auteur"
+
+#: inc/customizer.php:152
+msgid "Displayed in the footer. Plain text only. To include a copyright symbol type: (c)"
+msgstr "Affiché dans le pied de page. Texte brut uniquement. Pour inclure le symbole ©, saisissez : (c)"
+
+#: inc/customizer.php:170
+msgid "Enable Pro Mode (Custom Post Types)"
+msgstr "Activer le mode Pro (types de contenu personnalisés)"
+
+#: inc/customizer.php:171
+msgid "When enabled, chapters become a Custom Post Type grouped under a \"Book\" taxonomy. After toggling, visit Settings → Permalinks to flush rewrite rules."
+msgstr "Lorsqu'il est activé, les chapitres deviennent un type de contenu personnalisé regroupé sous la taxonomie \"Livre\". Après activation, rendez-vous dans Réglages → Permaliens pour mettre à jour les règles de réécriture."
+
+#: inc/customizer.php:27
+msgid "Book Settings"
+msgstr "Réglages du livre"
+
+#: inc/customizer.php:28
+msgid "Configure the appearance and behavior of your online book."
+msgstr "Configurez l'apparence et le comportement de votre livre en ligne."
+
+#: inc/customizer.php:45
+msgid "Book Font"
+msgstr "Police du livre"
+
+#: inc/customizer.php:46
+msgid "Choose the typeface used for reading. Georgia is a standard web-safe font; others are loaded from Google Fonts (requires internet connection)."
+msgstr "Choisissez la police utilisée pour la lecture. Georgia est une police standard ; les autres sont chargées depuis Google Fonts (connexion Internet requise)."
+
+#: inc/customizer.php:50
+msgid "Georgia (built-in)"
+msgstr "Georgia (intégrée)"
+
+#: inc/customizer.php:51
+msgid "Vollkorn"
+msgstr "Vollkorn"
+
+#: inc/customizer.php:52
+msgid "Arvo"
+msgstr "Arvo"
+
+#: inc/customizer.php:53
+msgid "Maven Pro"
+msgstr "Maven Pro"
+
+#: inc/customizer.php:54
+msgid "Ubuntu"
+msgstr "Ubuntu"
+
+#: inc/customizer.php:71
+msgid "Color Scheme"
+msgstr "Schéma de couleurs"
+
+#: inc/customizer.php:72
+msgid "All color schemes meet WCAG 2.2 AA contrast requirements."
+msgstr "Tous les schémas de couleurs respectent les exigences de contraste WCAG 2.2 AA."
+
+#: inc/customizer.php:76
+msgid "Black and White"
+msgstr "Noir et blanc"
+
+#: inc/customizer.php:77
+msgid "Cream and Brown"
+msgstr "Crème et marron"
+
+#: inc/customizer.php:94
+msgid "Show Comments on Chapters"
+msgstr "Afficher les commentaires sur les chapitres"
+
+#: inc/customizer.php:95
+msgid "Enable to display the comment section below each chapter."
+msgstr "Activez cette option pour afficher la section des commentaires sous chaque chapitre."
+
+#: inc/pro-mode.php:41
+msgctxt "post type general name"
+msgid "Chapters"
+msgstr "Chapitres"
+
+#: inc/pro-mode.php:42
+msgctxt "post type singular name"
+msgid "Chapter"
+msgstr "Chapitre"
+
+#: inc/pro-mode.php:43 inc/pro-mode.php:44
+msgid "Add New Chapter"
+msgstr "Ajouter un nouveau chapitre"
+
+#: inc/pro-mode.php:45
+msgid "Edit Chapter"
+msgstr "Modifier le chapitre"
+
+#: inc/pro-mode.php:46
+msgid "New Chapter"
+msgstr "Nouveau chapitre"
+
+#: inc/pro-mode.php:47
+msgid "View Chapter"
+msgstr "Voir le chapitre"
+
+#: inc/pro-mode.php:48
+msgid "Search Chapters"
+msgstr "Rechercher des chapitres"
+
+#: inc/pro-mode.php:49
+msgid "No chapters found."
+msgstr "Aucun chapitre trouvé."
+
+#: inc/pro-mode.php:50
+msgid "No chapters found in Trash."
+msgstr "Aucun chapitre trouvé dans la corbeille."
+
+#: inc/pro-mode.php:67
+msgctxt "taxonomy general name"
+msgid "Books"
+msgstr "Livres"
+
+#: inc/pro-mode.php:68
+msgctxt "taxonomy singular name"
+msgid "Book"
+msgstr "Livre"
+
+#: inc/pro-mode.php:69
+msgid "Search Books"
+msgstr "Rechercher des livres"
+
+#: inc/pro-mode.php:70
+msgid "All Books"
+msgstr "Tous les livres"
+
+#: inc/pro-mode.php:71
+msgid "Edit Book"
+msgstr "Modifier le livre"
+
+#: inc/pro-mode.php:72
+msgid "Update Book"
+msgstr "Mettre à jour le livre"
+
+#: inc/pro-mode.php:73
+msgid "Add New Book"
+msgstr "Ajouter un nouveau livre"
+
+#: inc/pro-mode.php:74
+msgid "New Book Name"
+msgstr "Nom du nouveau livre"
+
+#: inc/pro-mode.php:75 templates/page-toc.php:44
+msgid "Books"
+msgstr "Livres"
+
+#: inc/setup.php:132
+msgid "Sidebar Widgets"
+msgstr "Widgets de la barre latérale"
+
+#: inc/setup.php:134
+msgid "Widgets displayed in the sidebar."
+msgstr "Widgets affichés dans la barre latérale."
+
+#: inc/setup.php:67
+msgid "Primary Navigation"
+msgstr "Navigation principale"
+
+#: search.php:23
+msgid "Search Results for: %s"
+msgstr "Résultats de recherche pour : %s"
+
+#: search.php:36
+msgid "Search results pages"
+msgstr "Pages de résultats de recherche"
+
+#: search.php:40
+msgid "Previous page"
+msgstr "Page précédente"
+
+#: search.php:41
+msgid "Next page"
+msgstr "Page suivante"
+
+#: search.php:42 template-parts/content/content-chapter.php:42
+msgid "Page"
+msgstr "Page"
+
+#: search.php:55
+msgid "Nothing found for &#8220;%s&#8221;. Try a different search."
+msgstr "Aucun résultat pour « %s ». Essayez une autre recherche."
+
+#: searchform.php:16
+msgid "Search for:"
+msgstr "Rechercher :"
+
+#: searchform.php:22
+msgid "Search&hellip;"
+msgstr "Rechercher…"
+
+#: searchform.php:28
+msgid "Search"
+msgstr "Rechercher"
+
+#: sidebar.php:17
+msgid "Sidebar"
+msgstr "Barre latérale"
+
+#: taxonomy-book.php:31
+msgid "Book"
+msgstr "Livre"
+
+#: taxonomy-book.php:41
+msgid "Published %d"
+msgstr "Publié en %d"
+
+#: taxonomy-book.php:72 taxonomy-book.php:73 template-parts/navigation/toc.php:32 template-parts/navigation/toc.php:33
+msgid "Table of Contents"
+msgstr "Table des matières"
+
+#: taxonomy-book.php:85
+msgid "No chapters found for this book."
+msgstr "Aucun chapitre trouvé pour ce livre."
+
+#: template-parts/content/content-chapter.php:24
+msgid "Chapter %s"
+msgstr "Chapitre %s"
+
+#: template-parts/content/content-chapter.php:40 template-parts/content/content-page.php:24 template-parts/content/content.php:32
+msgid "Page navigation"
+msgstr "Navigation dans les pages"
+
+#: template-parts/content/content-chapter.php:40 template-parts/content/content-page.php:24 template-parts/content/content.php:32
+msgid "Pages:"
+msgstr "Pages :"
+
+#: template-parts/content/content-chapter.php:51
+msgid "Edit this chapter"
+msgstr "Modifier ce chapitre"
+
+#: template-parts/content/content-page.php:32
+msgid "Edit this page"
+msgstr "Modifier cette page"
+
+#: template-parts/content/content.php:43
+msgid "Edit this entry"
+msgstr "Modifier cet article"
+
+#: template-parts/global/metadata.php:17
+msgid "Published %s"
+msgstr "Publié le %s"
+
+#: template-parts/global/metadata.php:30
+msgid " by %s"
+msgstr " par %s"
+
+#: template-parts/navigation/chapter-navigation.php:49
+msgid "Chapter navigation"
+msgstr "Navigation entre les chapitres"
+
+#: template-parts/navigation/chapter-navigation.php:58
+msgid "Previous"
+msgstr "Précédent"
+
+#: template-parts/navigation/chapter-navigation.php:59
+msgid "Previous chapter:"
+msgstr "Chapitre précédent :"
+
+#: template-parts/navigation/chapter-navigation.php:70
+msgid "Next"
+msgstr "Suivant"
+
+#: template-parts/navigation/chapter-navigation.php:71
+msgid "Next chapter:"
+msgstr "Chapitre suivant :"
+
+#: template-parts/navigation/chapter-navigation.php:80
+msgid "Back to Table of Contents"
+msgstr "Retour à la table des matières"
+
+#: templates/page-landing.php:38
+msgid "Start reading"
+msgstr "Commencer la lecture"
+
+#: templates/page-landing.php:40
+msgid "Read Now →"
+msgstr "Lire maintenant →"
+
+#: templates/page-toc.php:43
+msgid "Books list"
+msgstr "Liste des livres"
