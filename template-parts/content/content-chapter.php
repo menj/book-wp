@@ -16,6 +16,7 @@ $chapter_number = get_post_meta( get_the_ID(), 'chapter_number', true );
 <article <?php post_class( 'chapter-article' ); ?> id="post-<?php the_ID(); ?>">
 
 	<header class="entry-header">
+		<?php bookwp_breadcrumbs(); ?>
 		<?php if ( $chapter_number ) : ?>
 			<span class="chapter-number-label">
 				<?php
@@ -28,7 +29,10 @@ $chapter_number = get_post_meta( get_the_ID(), 'chapter_number', true );
 			</span>
 		<?php endif; ?>
 		<h1 class="entry-title chapter-title"><?php the_title(); ?></h1>
+		<?php get_template_part( 'template-parts/global/metadata' ); ?>
 	</header><!-- .entry-header -->
+
+	<?php get_template_part( 'template-parts/global/featured-image' ); ?>
 
 	<?php bookwp_before_chapter_content( get_post() ); ?>
 

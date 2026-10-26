@@ -53,8 +53,10 @@ $chapters  = $book_term ? bookwp_get_pro_chapter_posts( $book_term->term_id ) : 
 						'medium',
 						false,
 						array(
-							// alt from attachment; empty if decorative.
-							'alt' => esc_attr( get_post_meta( $cover_id, '_wp_attachment_image_alt', true ) ),
+							// Alt from the Media Library, falling back to a description of the cover.
+							'alt' => trim( (string) get_post_meta( $cover_id, '_wp_attachment_image_alt', true ) )
+								/* translators: %s: book title */
+								?: sprintf( __( 'Cover of %s', 'book-wp' ), $book_term->name ),
 						)
 					);
 					?>

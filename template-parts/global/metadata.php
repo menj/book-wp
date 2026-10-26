@@ -20,15 +20,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 		?>
 	</time>
 	<?php
-	$author = get_the_author();
-	if ( $author ) :
+	$bookwp_author = get_the_author();
+	if ( $bookwp_author ) :
 		?>
 		<span class="entry-author">
 			<?php
 			printf(
-				/* translators: %s: author name */
+				/* translators: %s: author name, linked to the author archive */
 				esc_html__( 'by %s', 'book-wp' ),
-				esc_html( $author )
+				'<a class="url fn n" href="' . esc_url( get_author_posts_url( (int) get_the_author_meta( 'ID' ) ) ) . '" rel="author">' . esc_html( $bookwp_author ) . '</a>'
 			);
 			?>
 		</span>

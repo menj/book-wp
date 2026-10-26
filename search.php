@@ -33,17 +33,16 @@ get_header();
 				<?php get_template_part( 'template-parts/content/content' ); ?>
 			<?php endwhile; ?>
 
-			<nav class="navigation pagination" aria-label="<?php esc_attr_e( 'Search results pages', 'book-wp' ); ?>">
-				<?php
-				the_posts_pagination(
-					array(
-						'prev_text'          => '<span aria-hidden="true">&laquo;</span><span class="screen-reader-text">' . esc_html__( 'Previous page', 'book-wp' ) . '</span>',
-						'next_text'          => '<span aria-hidden="true">&raquo;</span><span class="screen-reader-text">' . esc_html__( 'Next page', 'book-wp' ) . '</span>',
-						'before_page_number' => '<span class="screen-reader-text">' . esc_html__( 'Page', 'book-wp' ) . ' </span>',
-					)
-				);
-				?>
-			</nav>
+			<?php
+			the_posts_pagination(
+				array(
+					'aria_label'         => __( 'Search results pages', 'book-wp' ),
+					'prev_text'          => '<span aria-hidden="true">&laquo;</span><span class="screen-reader-text">' . esc_html__( 'Previous page', 'book-wp' ) . '</span>',
+					'next_text'          => '<span aria-hidden="true">&raquo;</span><span class="screen-reader-text">' . esc_html__( 'Next page', 'book-wp' ) . '</span>',
+					'before_page_number' => '<span class="screen-reader-text">' . esc_html__( 'Page', 'book-wp' ) . ' </span>',
+				)
+			);
+			?>
 
 		<?php else : ?>
 

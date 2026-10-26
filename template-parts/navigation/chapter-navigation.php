@@ -33,7 +33,20 @@ if ( ! $prev && ! $next ) {
 	return;
 }
 
-$toc_url = home_url( '/' );
+$toc_url   = home_url( '/' );
+$toc_label = __( 'Back to Table of Contents', 'book-wp' );
+if ( bookwp_is_pro_mode() ) {
+	$book_terms = get_the_terms( $post_id, 'book' );
+	if ( $book_terms && ! is_wp_error( $book_terms ) ) {
+		$book_term = reset( $book_terms );
+		$book_link = get_term_link( $book_term );
+		if ( ! is_wp_error( $book_link ) ) {
+			$toc_url = $book_link;
+			/* translators: %s: book title */
+			$toc_label = sprintf( __( 'Back to %s contents', 'book-wp' ), $book_term->name );
+		}
+	}
+}
 ?>
 <nav class="chapter-navigation" aria-label="<?php esc_attr_e( 'Chapter navigation', 'book-wp' ); ?>">
 	<div class="chapter-nav-links">
@@ -66,7 +79,7 @@ $toc_url = home_url( '/' );
 
 	<p class="chapter-nav-back-toc">
 		<a href="<?php echo esc_url( $toc_url ); ?>">
-			&larr; <?php esc_html_e( 'Back to Table of Contents', 'book-wp' ); ?>
+			&larr; <?php echo esc_html( $toc_label ); ?>
 		</a>
 	</p>
 

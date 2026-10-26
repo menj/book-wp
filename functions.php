@@ -35,6 +35,7 @@ $bookwp_includes = array(
 	'inc/chapters.php',        // Chapter query helpers.
 	'inc/admin.php',           // Admin notices.
 	'inc/theme-options.php',   // Appearance → Theme Options settings page (tabbed).
+	'inc/seo.php',             // Meta description, canonical, breadcrumbs.
 	'inc/structured-data.php', // JSON-LD, extensibility hooks, head cleanup.
 );
 

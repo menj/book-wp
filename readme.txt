@@ -4,7 +4,7 @@ Tags: one-column, custom-colors, custom-menu, translation-ready, accessibility-r
 Requires at least: 6.2
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 2.1.0
+Stable tag: 2.2.0
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -118,6 +118,40 @@ To add a new language, open `languages/book-wp.pot` in Poedit or Loco Translate,
 
 WordPress 6.5+ also auto-loads translation files placed in `wp-content/languages/themes/book-wp-{locale}.mo`.
 
+== Search Engine Optimisation ==
+
+Book WP follows the theme-level guidance in Google's SEO Starter Guide and supports the structured data features from Google's list that apply to a book site. When Yoast SEO, Rank Math, All in One SEO, SEOPress, The SEO Framework or Slim SEO is active, the theme's description, canonical and structured data output switches off so tags are never duplicated.
+
+**Titles and descriptions**
+- Unique `<title>` on every view via WordPress `title-tag` support.
+- A unique description meta tag on every indexable view. It uses the excerpt or opening text of posts and chapters, the front page blurb or tagline on the home page, and the book or term description on archives. No generic fallback text is ever output.
+
+**URLs and crawling**
+- One canonical URL per listing view (front page, posts page, books, chapter archive, categories, tags, authors), with tracking parameters dropped. WordPress core supplies canonicals for single views.
+- Search results are marked noindex by WordPress core; the theme adds no description to them.
+- Trimming a chapter URL back to `/book/` redirects to the front page instead of returning a 404. `/chapter/` lists all chapters in Pro Mode.
+- XML sitemaps come from WordPress core (`/wp-sitemap.xml`) and include chapters and books in Pro Mode.
+
+**Navigation**
+- Text-only navigation; drop-down menus are also reachable by keyboard.
+- Visible breadcrumbs on chapters: Home, then the book in Pro Mode, then the chapter.
+- The Table of Contents page template doubles as an HTML site map.
+- The 404 page links home, offers search, and lists the table of contents.
+- Archive and blog listings are paginated so every post stays reachable.
+
+**Content**
+- One `<h1>` per view with a logical heading order.
+- Descriptive anchor text: chapter navigation names the target chapter, the landing page button names the first chapter, and the back link names the book in Pro Mode.
+- Links are visually distinct from body text.
+- Featured images and book covers always have alt text, falling back to the post or book title when none is set in the Media Library.
+
+**Structured data (JSON-LD)**
+- `Article` on chapters and `BlogPosting` on blog posts, with headline, author (name and URL), datePublished, dateModified, image and, in Pro Mode, the parent book.
+- `BreadcrumbList` on chapters, built from the same data as the visible breadcrumbs.
+- Every property describes visible content: the byline shows the author and date, and the featured image shown above the text is the image in the markup.
+- Not output on password-protected posts.
+- Disable with `add_filter( 'bookwp_enable_structured_data', '__return_false' );`. Adjust with the `bookwp_article_schema`, `bookwp_breadcrumbs` and `bookwp_meta_description` filters.
+
 == Security ==
 
 - All settings saved through the WordPress Settings API or Customizer API (no direct `$_POST` handling); one array option with a schema-driven sanitizer.
@@ -144,7 +178,8 @@ book-wp/
 │   ├── chapters.php                 Chapter query helpers (Default + Pro Mode)
 │   ├── admin.php                    Admin notices (cached)
 │   ├── theme-options.php            Appearance → Theme Options tabbed settings page
-│   └── structured-data.php          JSON-LD, extensibility hooks, head cleanup
+│   ├── seo.php                      Description meta, listing canonicals, breadcrumbs, /book/ redirect
+│   └── structured-data.php          Article + BreadcrumbList JSON-LD, extensibility hooks, head cleanup
 ├── header.php
 ├── footer.php
 ├── index.php
@@ -168,7 +203,8 @@ book-wp/
 │   │   └── chapter-navigation.php
 │   └── global/
 │       ├── site-branding.php
-│       └── metadata.php
+│       ├── metadata.php
+│       └── featured-image.php
 ├── templates/                       PHP page templates (Template Name: header)
 │   ├── page-toc.php
 │   ├── page-blank.php
@@ -221,6 +257,9 @@ Open `languages/book-wp.pot` in Poedit, translate all strings, and save as `{loc
 See changelog.md for the full changelog.
 
 == Upgrade Notice ==
+
+= 2.2.0 =
+Search engine optimisation pass based on Google's SEO Starter Guide and structured data documentation: description meta tags, listing canonicals, breadcrumbs, Article and BreadcrumbList JSON-LD, and a visible byline and featured image on chapters.
 
 = 2.1.0 =
 Settings are back on a dedicated, tabbed Theme Options page (Appearance → Theme Options) and mirrored in the Customizer. Existing 2.0 and 1.x settings migrate automatically. New Dark and Auto colour schemes, optional custom colours, automatic permalink refresh when toggling Pro Mode. Header and footer now align to the reading column and chapter navigation is lighter; child themes that restyle these should check upgrading.md.

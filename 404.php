@@ -29,6 +29,8 @@ get_header();
 			<?php get_search_form(); ?>
 		</section>
 
+		<?php get_template_part( 'template-parts/navigation/toc' ); ?>
+
 	</div><!-- .content-area -->
 </main><!-- #main-content -->
 

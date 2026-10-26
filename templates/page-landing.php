@@ -31,15 +31,29 @@ get_header();
 		<?php
 		while ( have_posts() ) :
 			the_post();
-			get_template_part( 'template-parts/content/content', 'page' );
+			?>
+			<div class="entry-content page-content">
+				<?php the_content(); ?>
+			</div>
+			<?php
 		endwhile;
-		?>
 
-		<nav class="chapter-nav-back-toc" aria-label="<?php esc_attr_e( 'Start reading', 'book-wp' ); ?>">
-			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="chapter-nav-link">
-				<?php esc_html_e( 'Read Now →', 'book-wp' ); ?>
-			</a>
-		</nav>
+		$bookwp_chapters = bookwp_is_pro_mode() ? bookwp_get_pro_chapter_posts() : bookwp_get_chapter_posts();
+		$bookwp_first    = $bookwp_chapters ? reset( $bookwp_chapters ) : null;
+		if ( $bookwp_first ) :
+			?>
+			<p class="read-now">
+				<a class="read-now__link" href="<?php echo esc_url( get_permalink( $bookwp_first ) ); ?>">
+					<?php
+					printf(
+						/* translators: %s: title of the first chapter */
+						esc_html__( 'Start reading: %s', 'book-wp' ),
+						esc_html( get_the_title( $bookwp_first ) )
+					);
+					?>
+				</a>
+			</p>
+		<?php endif; ?>
 
 	</div><!-- .content-area -->
 </main><!-- #main-content -->

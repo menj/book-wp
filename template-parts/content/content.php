@@ -23,6 +23,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<?php get_template_part( 'template-parts/global/metadata' ); ?>
 	</header><!-- .entry-header -->
 
+	<?php
+	if ( is_singular() ) {
+		get_template_part( 'template-parts/global/featured-image' );
+	}
+	?>
+
 	<div class="entry-content">
 		<?php
 		if ( is_singular() ) {

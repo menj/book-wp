@@ -7,6 +7,38 @@ Versioning: [Semantic Versioning](https://semver.org/)
 
 ---
 
+## [2.2.0] — 2026-10-26
+
+Search engine optimisation pass against Google's SEO Starter Guide and Google's list of supported structured data.
+
+### Added
+- `inc/seo.php`: description meta tag on every indexable view, built from page-specific text only.
+- Canonical URLs for listing views (front page, posts page, books, chapter archive, categories, tags, authors), without query strings.
+- Visible breadcrumbs on chapters (`bookwp_breadcrumbs()`), with a `bookwp_breadcrumbs` filter.
+- `BreadcrumbList` JSON-LD matching the visible breadcrumbs.
+- `BlogPosting` JSON-LD on regular posts.
+- Article markup now includes author (name and URL), image, `mainEntityOfPage` and, in Pro Mode, `isPartOf` the parent Book.
+- Visible byline (date and linked author) and featured image on chapters, so every structured data property describes visible content.
+- `template-parts/global/featured-image.php` with an alt-text fallback.
+- Archive and blog listings get an `<h1>` heading, an optional description, and pagination.
+- 404 page lists the table of contents.
+- `/book/` with no book slug redirects to the front page.
+- Detection of Rank Math (constant), SEOPress, The SEO Framework and Slim SEO via `bookwp_seo_plugin_active()`.
+
+### Changed
+- Book Landing Page template has a single `<h1>`; its button now links to the first chapter with the text "Start reading: {chapter}".
+- In Pro Mode the chapter back link goes to the book's contents page and names the book.
+- Chapter navigation titles use the link colour so they are recognisable as links.
+- Book covers fall back to "Cover of {book}" alt text.
+
+### Fixed
+- JSON-LD values were HTML-escaped, so "War & Peace" was published as "War &amp;amp; Peace". Values are now plain text, encoded safely for a script block.
+- SEOPress was detected by the wrong constant (`SLP_VERSION`), so the theme duplicated its markup.
+- Search results had a `<nav>` nested inside another `<nav>`.
+- Structured data no longer outputs on password-protected posts.
+
+---
+
 ## [2.1.0] — 2026-10-26
 
 ### Added

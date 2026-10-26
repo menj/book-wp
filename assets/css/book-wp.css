@@ -528,6 +528,127 @@ hr {
 .entry-content h4 { font-size: var(--font-size-base); font-weight: 700; }
 
 /* ============================================================
+   Breadcrumbs
+   ============================================================ */
+.breadcrumbs {
+	margin-bottom: var(--spacing-lg);
+	font-family: var(--font-ui);
+	font-size: var(--font-size-xs);
+	color: var(--color-text-muted);
+}
+
+.breadcrumbs__list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--spacing-xs);
+}
+
+.breadcrumbs__item + .breadcrumbs__item::before {
+	content: '/';
+	margin-right: var(--spacing-xs);
+	color: var(--color-border);
+}
+
+.breadcrumbs a {
+	color: var(--color-link);
+}
+
+/* ============================================================
+   Byline, featured image, archive headers
+   ============================================================ */
+.entry-meta {
+	margin-top: var(--spacing-sm);
+	font-family: var(--font-ui);
+	font-size: var(--font-size-xs);
+	color: var(--color-text-muted);
+}
+
+.entry-meta .entry-author a {
+	color: inherit;
+}
+
+.entry-featured-image {
+	margin: 0 0 var(--spacing-2xl);
+}
+
+.entry-featured-image img {
+	display: block;
+	width: 100%;
+	height: auto;
+	border-radius: var(--radius);
+}
+
+.archive-header {
+	margin-bottom: var(--spacing-2xl);
+}
+
+.archive-description {
+	color: var(--color-text-muted);
+}
+
+/* ============================================================
+   Pagination (the_posts_pagination)
+   ============================================================ */
+.pagination .nav-links {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--spacing-sm);
+	margin-top: var(--spacing-2xl);
+	font-family: var(--font-ui);
+	font-size: var(--font-size-sm);
+}
+
+.pagination .page-numbers {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 44px;
+	min-height: 44px;
+	padding: 0 var(--spacing-sm);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius);
+}
+
+.pagination .page-numbers.current {
+	border-color: var(--color-accent);
+	font-weight: 700;
+}
+
+/* ============================================================
+   Landing page call to action
+   ============================================================ */
+.read-now {
+	margin-top: var(--spacing-2xl);
+	text-align: center;
+}
+
+.read-now__link {
+	display: inline-flex;
+	align-items: center;
+	min-height: 44px;
+	padding: var(--spacing-sm) var(--spacing-xl);
+	border-radius: var(--radius);
+	background: var(--color-accent);
+	color: var(--color-bg);
+	font-family: var(--font-ui);
+	font-weight: 600;
+	text-decoration: none;
+}
+
+.read-now__link:visited {
+	color: var(--color-bg);
+}
+
+.read-now__link:hover {
+	opacity: 0.9;
+	text-decoration: underline;
+	color: var(--color-bg);
+}
+
+/* ============================================================
    Chapter Navigation
    ============================================================ */
 .chapter-navigation {
@@ -560,8 +681,12 @@ hr {
 	max-width: 320px;
 }
 
-.chapter-nav-link:hover .chapter-nav-title {
+.chapter-nav-link .chapter-nav-title {
 	color: var(--color-link);
+}
+
+.chapter-nav-link:hover .chapter-nav-title,
+.chapter-nav-link:focus-visible .chapter-nav-title {
 	text-decoration: underline;
 	text-underline-offset: 0.2em;
 }
