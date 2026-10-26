@@ -6,6 +6,8 @@
 	<exclude-pattern>/vendor/*</exclude-pattern>
 	<exclude-pattern>/node_modules/*</exclude-pattern>
 	<exclude-pattern>/assets/*</exclude-pattern>
+	<!-- CLI build script, not loaded by WordPress. -->
+	<exclude-pattern>/bin/*</exclude-pattern>
 
 	<arg value="sp"/>
 	<arg name="colors"/>

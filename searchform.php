@@ -9,15 +9,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$unique_id = 'search-form-' . esc_attr( uniqid() );
+$bookwp_unique_id = 'search-form-' . esc_attr( uniqid() );
 ?>
 <form role="search" method="get" class="search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-	<label for="<?php echo esc_attr( $unique_id ); ?>" class="screen-reader-text">
+	<label for="<?php echo esc_attr( $bookwp_unique_id ); ?>" class="screen-reader-text">
 		<?php esc_html_e( 'Search for:', 'book-wp' ); ?>
 	</label>
 	<input
 		type="search"
-		id="<?php echo esc_attr( $unique_id ); ?>"
+		id="<?php echo esc_attr( $bookwp_unique_id ); ?>"
 		class="search-field"
 		placeholder="<?php esc_attr_e( 'Search&hellip;', 'book-wp' ); ?>"
 		value="<?php echo esc_attr( get_search_query() ); ?>"

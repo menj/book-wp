@@ -18,10 +18,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	</p>
 
 	<?php
-	$description = get_bloginfo( 'description' );
-	if ( $description ) :
+	$bookwp_description = get_bloginfo( 'description' );
+	if ( $bookwp_description ) :
 		?>
-		<p class="site-description"><?php echo esc_html( $description ); ?></p>
+		<p class="site-description"><?php echo esc_html( $bookwp_description ); ?></p>
 	<?php endif; ?>
 </div><!-- .site-branding -->
 
@@ -46,14 +46,14 @@ endif;
 
 <?php
 // Chapter blurb: shown on chapter single pages only.
-$chapter_blurb = bookwp_get_option( 'chapter_blurb' );
-$is_chapter    = (
+$bookwp_chapter_blurb = bookwp_get_option( 'chapter_blurb' );
+$bookwp_is_chapter    = (
 	( ! bookwp_is_pro_mode() && is_singular( 'post' ) && has_category( 'chapter' ) ) ||
 	( bookwp_is_pro_mode() && is_singular( 'chapter' ) )
 );
-if ( $chapter_blurb && $is_chapter ) :
+if ( $bookwp_chapter_blurb && $bookwp_is_chapter ) :
 	?>
 	<div class="chapter-blurb" id="chapter-blurb">
-		<?php echo wp_kses_post( $chapter_blurb ); ?>
+		<?php echo wp_kses_post( $bookwp_chapter_blurb ); ?>
 	</div>
 <?php endif; ?>

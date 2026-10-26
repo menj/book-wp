@@ -21,32 +21,32 @@ get_header();
 		</header>
 
 		<?php
-		$front_blurb = bookwp_get_option( 'front_blurb' );
-		if ( $front_blurb ) :
+		$bookwp_front_blurb = bookwp_get_option( 'front_blurb' );
+		if ( $bookwp_front_blurb ) :
 			?>
 			<div class="front-blurb">
-				<?php echo wp_kses_post( $front_blurb ); ?>
+				<?php echo wp_kses_post( $bookwp_front_blurb ); ?>
 			</div>
 		<?php endif; ?>
 
 		<?php
 		if ( bookwp_is_pro_mode() ) {
 			// In Pro Mode, list all books with links to their taxonomy pages.
-			$books = get_terms(
+			$bookwp_books = get_terms(
 				array(
-					'taxonomy' => 'book',
+					'taxonomy'   => 'book',
 					'hide_empty' => true,
 				)
 			);
-			if ( $books && ! is_wp_error( $books ) ) :
+			if ( $bookwp_books && ! is_wp_error( $bookwp_books ) ) :
 				?>
 				<nav aria-label="<?php esc_attr_e( 'Books list', 'book-wp' ); ?>">
 					<h2><?php esc_html_e( 'Books', 'book-wp' ); ?></h2>
 					<ul class="toc-list">
-						<?php foreach ( $books as $book ) : ?>
+						<?php foreach ( $bookwp_books as $bookwp_book ) : ?>
 							<li>
-								<a href="<?php echo esc_url( get_term_link( $book ) ); ?>">
-									<?php echo esc_html( $book->name ); ?>
+								<a href="<?php echo esc_url( get_term_link( $bookwp_book ) ); ?>">
+									<?php echo esc_html( $bookwp_book->name ); ?>
 								</a>
 							</li>
 						<?php endforeach; ?>

@@ -10,20 +10,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$chapter_number = get_post_meta( get_the_ID(), 'chapter_number', true );
+$bookwp_chapter_number = get_post_meta( get_the_ID(), 'chapter_number', true );
 ?>
 
 <article <?php post_class( 'chapter-article' ); ?> id="post-<?php the_ID(); ?>">
 
 	<header class="entry-header">
 		<?php bookwp_breadcrumbs(); ?>
-		<?php if ( $chapter_number ) : ?>
+		<?php if ( $bookwp_chapter_number ) : ?>
 			<span class="chapter-number-label">
 				<?php
 				printf(
 					/* translators: %s: chapter number */
 					esc_html__( 'Chapter %s', 'book-wp' ),
-					esc_html( $chapter_number )
+					esc_html( $bookwp_chapter_number )
 				);
 				?>
 			</span>

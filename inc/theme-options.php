@@ -127,9 +127,9 @@ function bookwp_enqueue_theme_options_assets( $hook_suffix ) {
 			'tabs'       => array_keys( bookwp_get_option_tabs() ),
 			'defaultTab' => 'design',
 			'i18n'       => array(
-				'clear'    => __( 'Clear', 'book-wp' ),
-				'default'  => __( 'Scheme default', 'book-wp' ),
-				'unsaved'  => __( 'You have unsaved changes.', 'book-wp' ),
+				'clear'   => __( 'Clear', 'book-wp' ),
+				'default' => __( 'Scheme default', 'book-wp' ),
+				'unsaved' => __( 'You have unsaved changes.', 'book-wp' ),
 			),
 		)
 	);
@@ -188,7 +188,19 @@ function bookwp_render_theme_options_page() {
 				<nav class="bookwp-tabs" role="tablist" aria-label="<?php esc_attr_e( 'Theme option sections', 'book-wp' ); ?>">
 					<?php foreach ( $tabs as $slug => $meta ) : ?>
 						<a
-							href="<?php echo esc_url( add_query_arg( array( 'page' => BOOKWP_OPTIONS_PAGE_SLUG, 'tab' => $slug ), admin_url( 'themes.php' ) ) ); ?>"
+							href="
+							<?php
+							echo esc_url(
+								add_query_arg(
+									array(
+										'page' => BOOKWP_OPTIONS_PAGE_SLUG,
+										'tab'  => $slug,
+									),
+									admin_url( 'themes.php' )
+								)
+							);
+							?>
+									"
 							class="bookwp-tabs__tab<?php echo $slug === $active_tab ? ' is-active' : ''; ?>"
 							id="bookwp-tab-<?php echo esc_attr( $slug ); ?>"
 							role="tab"

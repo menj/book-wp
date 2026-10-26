@@ -41,13 +41,3 @@ jobs:
         if: matrix.php == '8.3'
         run: |
           php bin/make-pot.php --check
-
-  theme-check:
-    name: Theme Check
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Run Theme Check
-        uses: anthonyb/theme-check-action@v1
-        with:
-          root: .

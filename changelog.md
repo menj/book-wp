@@ -7,6 +7,18 @@ Versioning: [Semantic Versioning](https://semver.org/)
 
 ---
 
+## [2.2.1] — 2026-10-26
+
+### Fixed
+- Block editor now shows the chosen reading font and custom colours, passed as CSS custom properties through `block_editor_settings_all` instead of body classes the editor never receives.
+- Chapter navigation overrides now work through `get_template_part()`'s `$args` (`prev`, `next`). The previous `$prev_chapter` / `$next_chapter` variables were never set by WordPress.
+- Code passes WordPress Coding Standards with no errors or warnings: template variables prefixed `bookwp_`, file doc comments added, short ternary removed, `bookwp_get_option()` second parameter renamed to `$fallback`.
+
+### Changed
+- CI: removed the Theme Check job, which referenced an unverified GitHub Action. `bin/` is excluded from PHPCS.
+
+---
+
 ## [2.2.0] — 2026-10-26
 
 Search engine optimisation pass against Google's SEO Starter Guide and Google's list of supported structured data.

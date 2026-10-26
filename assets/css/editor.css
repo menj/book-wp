@@ -102,12 +102,5 @@
 	margin: var(--spacing-lg) 0;
 }
 
-/* Font variants — the editor body receives the same .font-* class via body_class on the editor wrapper */
-.editor-styles-wrapper.font-vollkorn,
-.font-vollkorn .editor-styles-wrapper { --font-body: 'Vollkorn', Georgia, serif; }
-.editor-styles-wrapper.font-arvo,
-.font-arvo .editor-styles-wrapper { --font-body: 'Arvo', Georgia, serif; }
-.editor-styles-wrapper.font-maven-pro,
-.font-maven-pro .editor-styles-wrapper { --font-body: 'Maven Pro', sans-serif; }
-.editor-styles-wrapper.font-ubuntu,
-.font-ubuntu .editor-styles-wrapper { --font-body: 'Ubuntu', sans-serif; }
+/* The chosen font and custom colours are injected as custom properties on
+   .editor-styles-wrapper by bookwp_block_editor_settings() in inc/setup.php. */

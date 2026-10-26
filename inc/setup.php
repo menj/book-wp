@@ -144,6 +144,53 @@ function bookwp_enqueue_editor_font() {
 }
 add_action( 'after_setup_theme', 'bookwp_enqueue_editor_font', 11 );
 
+/**
+ * Give the block editor the reader's chosen font and custom colours.
+ *
+ * The editor never receives front-end body classes, so the choices are
+ * passed as CSS custom properties in the editor settings. WordPress scopes
+ * these styles to .editor-styles-wrapper, where assets/css/editor.css reads them.
+ *
+ * @param array $settings Block editor settings.
+ * @return array
+ */
+function bookwp_block_editor_settings( $settings ) {
+	$props = array();
+
+	$font     = bookwp_get_option( 'font' );
+	$font_map = bookwp_get_font_map();
+	if ( 'georgia' !== $font && isset( $font_map[ $font ] ) ) {
+		$props[] = '--font-body:' . $font_map[ $font ]['family'];
+	}
+
+	$bg     = bookwp_get_option( 'color_bg' );
+	$text   = bookwp_get_option( 'color_text' );
+	$accent = bookwp_get_option( 'color_accent' );
+	if ( $bg ) {
+		$props[] = '--color-bg:' . $bg;
+	}
+	if ( $text ) {
+		$props[] = '--color-text:' . $text;
+		$props[] = '--color-heading:' . $text;
+	}
+	if ( $accent ) {
+		$props[] = '--color-link:' . $accent;
+		$props[] = '--color-accent:' . $accent;
+	}
+
+	if ( $props ) {
+		$settings['styles']   = isset( $settings['styles'] ) && is_array( $settings['styles'] ) ? $settings['styles'] : array();
+		$settings['styles'][] = array(
+			'css'            => 'body{' . implode( ';', $props ) . '}',
+			'__unstableType' => 'theme',
+			'isGlobalStyles' => false,
+		);
+	}
+
+	return $settings;
+}
+add_filter( 'block_editor_settings_all', 'bookwp_block_editor_settings' );
+
 // ============================================================
 // 3. BODY CLASSES (font + colour scheme + custom colours)
 // ============================================================

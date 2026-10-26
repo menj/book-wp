@@ -21,9 +21,9 @@ get_header();
 		while ( have_posts() ) :
 			the_post();
 
-			$is_chapter = has_category( 'chapter' ) && ! bookwp_is_pro_mode();
+			$bookwp_is_chapter = has_category( 'chapter' ) && ! bookwp_is_pro_mode();
 
-			if ( $is_chapter ) {
+			if ( $bookwp_is_chapter ) {
 				get_template_part( 'template-parts/content/content', 'chapter' );
 				get_template_part( 'template-parts/navigation/chapter-navigation' );
 

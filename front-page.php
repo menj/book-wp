@@ -20,19 +20,19 @@ get_header();
 		<div class="book-title-section">
 			<h1><?php bloginfo( 'name' ); ?></h1>
 			<?php
-			$tagline = get_bloginfo( 'description' );
-			if ( $tagline ) :
+			$bookwp_tagline = get_bloginfo( 'description' );
+			if ( $bookwp_tagline ) :
 				?>
-				<p class="book-description"><?php echo esc_html( $tagline ); ?></p>
+				<p class="book-description"><?php echo esc_html( $bookwp_tagline ); ?></p>
 			<?php endif; ?>
 		</div><!-- .book-title-section -->
 
 		<?php
-		$front_blurb = bookwp_get_option( 'front_blurb' );
-		if ( $front_blurb ) :
+		$bookwp_front_blurb = bookwp_get_option( 'front_blurb' );
+		if ( $bookwp_front_blurb ) :
 			?>
 			<div class="front-blurb" id="front-blurb">
-				<?php echo wp_kses_post( $front_blurb ); ?>
+				<?php echo wp_kses_post( $bookwp_front_blurb ); ?>
 			</div>
 		<?php endif; ?>
 

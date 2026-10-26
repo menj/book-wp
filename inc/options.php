@@ -235,13 +235,13 @@ add_action( 'delete_option_' . BOOKWP_OPTION_NAME, 'bookwp_flush_options_cache',
  * Read a single theme option.
  *
  * @param string $key     Option key, with or without the `bookwp_` prefix.
- * @param mixed  $default Default when the key is unknown.
+ * @param mixed  $fallback Value returned when the key is unknown.
  * @return mixed
  */
-function bookwp_get_option( $key, $default = '' ) {
+function bookwp_get_option( $key, $fallback = '' ) {
 	$key     = bookwp_normalize_option_key( $key );
 	$options = bookwp_get_options();
-	return array_key_exists( $key, $options ) ? $options[ $key ] : $default;
+	return array_key_exists( $key, $options ) ? $options[ $key ] : $fallback;
 }
 
 /**
@@ -299,7 +299,7 @@ function bookwp_sanitize_options( $input ) {
 	$output = array();
 
 	foreach ( bookwp_get_option_schema() as $key => $field ) {
-		$raw = array_key_exists( $key, $input ) ? $input[ $key ] : ( 'checkbox' === $field['type'] ? 0 : $field['default'] );
+		$raw            = array_key_exists( $key, $input ) ? $input[ $key ] : ( 'checkbox' === $field['type'] ? 0 : $field['default'] );
 		$output[ $key ] = is_callable( $field['sanitize'] ) ? call_user_func( $field['sanitize'], $raw ) : $field['default'];
 	}
 

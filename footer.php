@@ -13,10 +13,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<footer id="footer" class="site-footer" role="contentinfo">
 		<div class="site-footer-inner">
 			<?php
-			$copyright = bookwp_get_option( 'copyright' );
-			if ( $copyright ) :
+			$bookwp_copyright = bookwp_get_option( 'copyright' );
+			if ( $bookwp_copyright ) :
 				?>
-				<p class="footer-copyright"><?php echo esc_html( $copyright ); ?></p>
+				<p class="footer-copyright"><?php echo esc_html( $bookwp_copyright ); ?></p>
 				<?php
 			endif;
 			?>

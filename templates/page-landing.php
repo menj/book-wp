@@ -21,10 +21,10 @@ get_header();
 		<div class="book-title-section">
 			<h1><?php bloginfo( 'name' ); ?></h1>
 			<?php
-			$tagline = get_bloginfo( 'description' );
-			if ( $tagline ) :
+			$bookwp_tagline = get_bloginfo( 'description' );
+			if ( $bookwp_tagline ) :
 				?>
-				<p class="book-description"><?php echo esc_html( $tagline ); ?></p>
+				<p class="book-description"><?php echo esc_html( $bookwp_tagline ); ?></p>
 			<?php endif; ?>
 		</div><!-- .book-title-section -->
 

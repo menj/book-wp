@@ -11,36 +11,36 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$current_post_id = get_the_ID();
+$bookwp_current_post_id = get_the_ID();
 
 // In Pro Mode, chapters are the 'chapter' CPT; Default Mode uses category posts.
 if ( bookwp_is_pro_mode() ) {
 	// When loaded outside a book taxonomy context, show all chapters unfiltered.
-	$queried = get_queried_object();
-	$book_id = ( $queried instanceof WP_Term && 'book' === $queried->taxonomy )
-		? $queried->term_id
+	$bookwp_queried  = get_queried_object();
+	$bookwp_book_id  = ( $bookwp_queried instanceof WP_Term && 'book' === $bookwp_queried->taxonomy )
+		? $bookwp_queried->term_id
 		: null;
-	$chapters = bookwp_get_pro_chapter_posts( $book_id );
+	$bookwp_chapters = bookwp_get_pro_chapter_posts( $bookwp_book_id );
 } else {
-	$chapters = bookwp_get_chapter_posts();
+	$bookwp_chapters = bookwp_get_chapter_posts();
 }
 
-if ( empty( $chapters ) ) {
+if ( empty( $bookwp_chapters ) ) {
 	return;
 }
 ?>
 <nav class="toc-container" aria-label="<?php esc_attr_e( 'Table of Contents', 'book-wp' ); ?>">
 	<h2 class="toc-heading" id="toc-heading"><?php esc_html_e( 'Table of Contents', 'book-wp' ); ?></h2>
 	<ol class="toc-list" aria-labelledby="toc-heading">
-		<?php foreach ( $chapters as $chapter ) : ?>
+		<?php foreach ( $bookwp_chapters as $bookwp_chapter ) : ?>
 			<li>
 				<a
-					href="<?php echo esc_url( get_permalink( $chapter->ID ) ); ?>"
-					<?php if ( $current_post_id && $current_post_id === $chapter->ID ) : ?>
+					href="<?php echo esc_url( get_permalink( $bookwp_chapter->ID ) ); ?>"
+					<?php if ( $bookwp_current_post_id && $bookwp_current_post_id === $bookwp_chapter->ID ) : ?>
 					aria-current="page"
 					<?php endif; ?>
 				>
-					<?php echo esc_html( get_the_title( $chapter->ID ) ); ?>
+					<?php echo esc_html( get_the_title( $bookwp_chapter->ID ) ); ?>
 				</a>
 			</li>
 		<?php endforeach; ?>
