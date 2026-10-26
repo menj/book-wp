@@ -319,7 +319,9 @@ function bookwp_render_option_field( $key, $field, $value ) {
 						<input type="hidden" name="<?php echo esc_attr( $name ); ?>" value="0">
 						<input type="checkbox" role="switch" id="<?php echo esc_attr( $id ); ?>" name="<?php echo esc_attr( $name ); ?>" value="1" <?php checked( (int) $value, 1 ); ?> aria-describedby="<?php echo esc_attr( $desc ); ?>">
 						<span class="bookwp-switch__track" aria-hidden="true"><span class="bookwp-switch__thumb"></span></span>
-						<span class="bookwp-switch__text"><?php echo esc_html( $field['label'] ); ?></span>
+						<span class="screen-reader-text"><?php echo esc_html( $field['label'] ); ?></span>
+						<span class="bookwp-switch__state bookwp-switch__state--on" aria-hidden="true"><?php esc_html_e( 'On', 'book-wp' ); ?></span>
+						<span class="bookwp-switch__state bookwp-switch__state--off" aria-hidden="true"><?php esc_html_e( 'Off', 'book-wp' ); ?></span>
 					</label>
 					<?php
 					break;

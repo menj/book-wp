@@ -39,6 +39,12 @@ Versioning: [Semantic Versioning](https://semver.org/)
 - Skip link and search button colours use scheme tokens instead of hard-coded white, so they remain legible in Dark mode.
 - Requires at least WordPress 6.2; tested up to 6.8.
 
+### Design
+- Header and footer align to the reading column; footer credit styled to match the copyright line.
+- Lighter, borderless previous/next chapter links with titles in the body font.
+- Table of contents numbers use the interface font; the redundant current-chapter arrow is removed.
+- Theme Options: scheme swatches show each scheme background with its accent colour, switches show On/Off instead of repeating the label, and the Customizer link is a proper secondary button with hover and focus states.
+
 ### Fixed
 - Legacy 1.x font value `maven` is remapped to `maven-pro`; upgraded sites no longer fall back to Georgia with a dead body class.
 - Duplicate `align-items` declaration on `.toc-list a`.

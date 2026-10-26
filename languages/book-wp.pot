@@ -241,6 +241,14 @@ msgstr ""
 msgid "Nothing found for &#8220;%s&#8221;. Try a different search."
 msgstr ""
 
+#: inc/theme-options.php:324
+msgid "Off"
+msgstr ""
+
+#: inc/theme-options.php:323
+msgid "On"
+msgstr ""
+
 #: inc/theme-options.php:175
 msgid "Open in Customizer for live preview"
 msgstr ""

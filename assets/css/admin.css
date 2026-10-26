@@ -14,7 +14,7 @@
 	--bookwp-accent-ink: #ffffff;
 	--bookwp-radius: 6px;
 	--bookwp-space: 16px;
-	max-width: 1080px;
+	max-width: 1180px;
 	margin-right: 20px;
 	color: var(--bookwp-ink);
 }
@@ -46,14 +46,30 @@
 }
 
 .bookwp-options__customizer-link {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 7px 14px;
+	border: 1px solid var(--bookwp-line);
+	border-radius: var(--bookwp-radius);
+	background: var(--bookwp-surface);
+	color: var(--bookwp-ink);
 	font-size: 13px;
+	font-weight: 500;
 	text-decoration: none;
-	padding: 6px 0;
+	transition: border-color 120ms ease, color 120ms ease;
 }
 
 .bookwp-options__customizer-link:hover,
 .bookwp-options__customizer-link:focus {
-	text-decoration: underline;
+	border-color: var(--bookwp-accent);
+	color: var(--bookwp-accent);
+}
+
+.bookwp-options__customizer-link:focus-visible {
+	outline: 2px solid var(--bookwp-accent);
+	outline-offset: 2px;
+	box-shadow: none;
 }
 
 /* ---------- Layout: vertical tabs on wide screens ---------- */
@@ -284,20 +300,27 @@
 	background: #ffffff;
 }
 
-.bookwp-radio--black-white .bookwp-radio__swatch {
-	background: linear-gradient(135deg, #ffffff 50%, #1a1a1a 50%);
+.bookwp-radio__swatch {
+	position: relative;
 }
 
-.bookwp-radio--cream-brown .bookwp-radio__swatch {
-	background: linear-gradient(135deg, #fdf6e3 50%, #7a3b1e 50%);
+.bookwp-radio__swatch::after {
+	content: '';
+	position: absolute;
+	right: 4px;
+	bottom: 4px;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: var(--swatch-accent);
 }
 
-.bookwp-radio--dark .bookwp-radio__swatch {
-	background: linear-gradient(135deg, #15171a 50%, #e8e6e3 50%);
-}
-
+.bookwp-radio--black-white .bookwp-radio__swatch { background: #ffffff; --swatch-accent: #0044cc; }
+.bookwp-radio--cream-brown .bookwp-radio__swatch { background: #fdf6e3; --swatch-accent: #7a3b1e; }
+.bookwp-radio--dark .bookwp-radio__swatch { background: #15171a; --swatch-accent: #8ab4f8; }
 .bookwp-radio--auto .bookwp-radio__swatch {
-	background: conic-gradient(#ffffff 0 25%, #1a1a1a 25% 50%, #15171a 50% 75%, #e8e6e3 75%);
+	background: linear-gradient(90deg, #ffffff 50%, #15171a 50%);
+	--swatch-accent: #0044cc;
 }
 
 .bookwp-radio__label {
@@ -378,8 +401,19 @@
 	outline-offset: 2px;
 }
 
-.bookwp-switch__text {
-	color: var(--bookwp-ink);
+.bookwp-switch__state {
+	color: var(--bookwp-ink-muted);
+	font-size: 13px;
+	min-width: 2em;
+}
+
+.bookwp-switch__state--on,
+.bookwp-switch input:checked ~ .bookwp-switch__state--off {
+	display: none;
+}
+
+.bookwp-switch input:checked ~ .bookwp-switch__state--on {
+	display: inline;
 }
 
 /* ---------- Actions ---------- */
@@ -408,6 +442,7 @@
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
 	.bookwp-tabs__tab,
+	.bookwp-options__customizer-link,
 	.bookwp-radio,
 	.bookwp-switch__track,
 	.bookwp-switch__thumb {
