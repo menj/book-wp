@@ -17,7 +17,7 @@ get_header();
 	<div class="content-area">
 
 		<?php
-		$front_blurb = bookwp_get_option( 'bookwp_front_blurb', '' );
+		$front_blurb = bookwp_get_option( 'front_blurb' );
 		if ( $front_blurb ) :
 			?>
 			<div class="front-blurb" id="front-blurb">

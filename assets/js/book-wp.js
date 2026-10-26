@@ -1,13 +1,15 @@
 /**
  * Book WP — Main JavaScript
- * Version: 2.0.0
  * License: GPL-2.0-or-later
  *
  * No jQuery dependency. Vanilla JS only.
+ * Translatable strings arrive via wp_localize_script() as window.bookwpL10n.
  */
 
-(function () {
+( function () {
 	'use strict';
+
+	var l10n = window.bookwpL10n || {};
 
 	/**
 	 * Keyboard navigation: allow Enter/Space on focusable non-button elements
@@ -28,20 +30,18 @@
 	}
 
 	/**
-	 * Smooth scroll polyfill for skip link (if browser lacks smooth scroll support).
-	 * Respects prefers-reduced-motion.
+	 * Move focus to the main content area when the skip link is used.
 	 */
 	function initSkipLink() {
 		var skipLink = document.querySelector( '.skip-link' );
 		if ( ! skipLink ) {
 			return;
 		}
-		skipLink.addEventListener( 'click', function ( e ) {
+		skipLink.addEventListener( 'click', function () {
 			var target = document.querySelector( skipLink.getAttribute( 'href' ) );
 			if ( ! target ) {
 				return;
 			}
-			// Move focus to main content area.
 			target.setAttribute( 'tabindex', '-1' );
 			target.focus();
 		} );
@@ -49,20 +49,19 @@
 
 	/**
 	 * Mark external links with accessible indication.
-	 * Adds screen-reader text "(opens in new tab)" when target="_blank".
+	 * Adds screen-reader text when target="_blank" and ensures rel="noopener".
 	 */
 	function annotateExternalLinks() {
-		var currentHost = window.location.hostname;
+		var notice = l10n.opensInNewTab || '(opens in new tab)';
 		document.querySelectorAll( 'a[target="_blank"]' ).forEach( function ( link ) {
-			// Only annotate once.
 			if ( link.querySelector( '.external-link-notice' ) ) {
-				return;
+				return; // Only annotate once.
 			}
 			var span = document.createElement( 'span' );
 			span.className = 'screen-reader-text external-link-notice';
-			span.textContent = ' (opens in new tab)';
+			span.textContent = ' ' + notice;
 			link.appendChild( span );
-			// Ensure rel includes noopener for security.
+
 			var rel = link.getAttribute( 'rel' ) || '';
 			if ( rel.indexOf( 'noopener' ) === -1 ) {
 				link.setAttribute( 'rel', ( rel + ' noopener noreferrer' ).trim() );
@@ -70,17 +69,15 @@
 		} );
 	}
 
-	// Init on DOM ready.
-	if ( document.readyState === 'loading' ) {
-		document.addEventListener( 'DOMContentLoaded', function () {
-			initKeyboardRoleButtons();
-			initSkipLink();
-			annotateExternalLinks();
-		} );
-	} else {
+	function init() {
 		initKeyboardRoleButtons();
 		initSkipLink();
 		annotateExternalLinks();
 	}
 
-})();
+	if ( document.readyState === 'loading' ) {
+		document.addEventListener( 'DOMContentLoaded', init );
+	} else {
+		init();
+	}
+} )();

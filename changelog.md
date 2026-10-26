@@ -7,6 +7,50 @@ Versioning: [Semantic Versioning](https://semver.org/)
 
 ---
 
+## [2.1.0] — 2026-10-26
+
+### Added
+
+**Settings**
+- Tabbed **Theme Options** page at Appearance → Theme Options with three tabs: Typography & Colours, Content & Blurbs, Advanced. Built on the Settings API; keeps the 1.x `book-wp-options` menu slug so old bookmarks work.
+- Dedicated admin assets: `assets/css/admin.css` and `assets/js/admin.js` (accessible WAI-ARIA tabs with arrow-key navigation, WordPress colour pickers, unsaved-changes hint). Loaded only on the Theme Options screen.
+- Customizer restructured into a **Book WP panel** with sections matching the three tabs. Customizer controls bind to the same `bookwp_options` array, so both surfaces stay in sync.
+- Schema-driven options layer (`inc/options.php`): a single `bookwp_get_option_schema()` defines each field's tab, type, default, sanitizer and labels; the Theme Options page, Customizer, and sanitization all derive from it.
+- One-time migration seeds `bookwp_options` from 2.0.x theme_mods and 1.x `book_wp_*` options on first admin load.
+
+**Colour**
+- **Dark** colour scheme (night reading) and **Auto** scheme that follows `prefers-color-scheme`.
+- Optional **custom colours** (background, text, accent) overriding the active scheme via CSS custom properties; emitted as a small inline style.
+- `<meta name="color-scheme">` output for Dark and Auto so native form controls match.
+
+**Tooling**
+- `BOOKWP_VERSION` constant read from the `style.css` header; used for all asset versioning.
+- `bin/make-pot.php` regenerates `languages/book-wp.pot` (with `--check` mode for CI).
+- `composer.json`, `phpcs.xml.dist` (WordPress Coding Standards + PHPCompatibilityWP), `.gitignore`.
+- GitHub Actions workflow: PHP syntax check on 7.4/8.1/8.3, PHPCS, Theme Check, `.pot` freshness.
+- `assets/css/editor.css`: dedicated block editor stylesheet with typography and colour tokens only.
+
+### Changed
+- Pro Mode toggle now **flushes rewrite rules automatically** on the next request after saving (from either Theme Options or Customizer). The manual Settings → Permalinks step is no longer required.
+- Chapter prev/next navigation uses `bookwp_get_adjacent_chapters()`, now mode-aware via the new `bookwp_get_chapter_sequence()`, instead of duplicating the logic in the template part.
+- The "missing `chapter_number`" admin notice count is cached in a transient for an hour and invalidated on post/meta/term changes.
+- JSON-LD Article markup in Default Mode is emitted only for posts in the `chapter` category, not every single post.
+- The "(opens in new tab)" screen-reader text is now translatable, passed to JS via `wp_localize_script()`.
+- Skip link and search button colours use scheme tokens instead of hard-coded white, so they remain legible in Dark mode.
+- Requires at least WordPress 6.2; tested up to 6.8.
+
+### Fixed
+- Legacy 1.x font value `maven` is remapped to `maven-pro`; upgraded sites no longer fall back to Georgia with a dead body class.
+- Duplicate `align-items` declaration on `.toc-list a`.
+- Empty `* {}` rule removed from the stylesheet.
+- Leading space removed from the translatable author string in `metadata.php`.
+
+### Removed
+- Legacy "Book WP Options" redirect page (replaced by the real Theme Options page at the same slug).
+- `inc/customizer.php` option helper and font map (moved to `inc/options.php`).
+
+---
+
 ## [2.0.0] — 2026-03-01
 
 ### Added

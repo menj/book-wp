@@ -1,0 +1,416 @@
+/*
+ * Book WP — Theme Options admin stylesheet
+ * Loaded only on Appearance → Theme Options.
+ * Minimalist, token-driven, and respects the admin colour scheme via WP's own variables where possible.
+ */
+
+.bookwp-options {
+	--bookwp-ink: #1d2327;
+	--bookwp-ink-muted: #50575e;
+	--bookwp-line: #dcdcde;
+	--bookwp-surface: #ffffff;
+	--bookwp-surface-alt: #f6f7f7;
+	--bookwp-accent: #2271b1;
+	--bookwp-accent-ink: #ffffff;
+	--bookwp-radius: 6px;
+	--bookwp-space: 16px;
+	max-width: 1080px;
+	margin-right: 20px;
+	color: var(--bookwp-ink);
+}
+
+/* ---------- Header ---------- */
+.bookwp-options__header {
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+	gap: var(--bookwp-space);
+	flex-wrap: wrap;
+	padding: 24px 0 16px;
+	border-bottom: 1px solid var(--bookwp-line);
+	margin-bottom: 20px;
+}
+
+.bookwp-options__title {
+	margin: 0;
+	font-size: 24px;
+	font-weight: 600;
+	line-height: 1.2;
+	letter-spacing: -0.01em;
+}
+
+.bookwp-options__subtitle {
+	margin: 4px 0 0;
+	color: var(--bookwp-ink-muted);
+	font-size: 13px;
+}
+
+.bookwp-options__customizer-link {
+	font-size: 13px;
+	text-decoration: none;
+	padding: 6px 0;
+}
+
+.bookwp-options__customizer-link:hover,
+.bookwp-options__customizer-link:focus {
+	text-decoration: underline;
+}
+
+/* ---------- Layout: vertical tabs on wide screens ---------- */
+.bookwp-options__layout {
+	display: grid;
+	grid-template-columns: 220px minmax(0, 1fr);
+	gap: 24px;
+	align-items: start;
+}
+
+@media (max-width: 782px) {
+	.bookwp-options__layout {
+		grid-template-columns: 1fr;
+	}
+}
+
+/* ---------- Tabs ---------- */
+.bookwp-tabs {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	position: sticky;
+	top: 48px;
+}
+
+@media (max-width: 782px) {
+	.bookwp-tabs {
+		flex-direction: row;
+		flex-wrap: wrap;
+		position: static;
+		border-bottom: 1px solid var(--bookwp-line);
+		padding-bottom: 8px;
+	}
+}
+
+.bookwp-tabs__tab {
+	display: block;
+	padding: 10px 14px;
+	border-radius: var(--bookwp-radius);
+	color: var(--bookwp-ink-muted);
+	text-decoration: none;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 1.4;
+	border-left: 3px solid transparent;
+	transition: background-color 120ms ease, color 120ms ease;
+}
+
+.bookwp-tabs__tab:hover {
+	background: var(--bookwp-surface-alt);
+	color: var(--bookwp-ink);
+}
+
+.bookwp-tabs__tab:focus-visible {
+	outline: 2px solid var(--bookwp-accent);
+	outline-offset: 2px;
+	box-shadow: none;
+}
+
+.bookwp-tabs__tab.is-active {
+	background: var(--bookwp-surface);
+	color: var(--bookwp-ink);
+	border-left-color: var(--bookwp-accent);
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+@media (max-width: 782px) {
+	.bookwp-tabs__tab {
+		border-left: 0;
+		border-bottom: 3px solid transparent;
+		border-radius: var(--bookwp-radius) var(--bookwp-radius) 0 0;
+	}
+	.bookwp-tabs__tab.is-active {
+		border-bottom-color: var(--bookwp-accent);
+		box-shadow: none;
+	}
+}
+
+/* ---------- Panels ---------- */
+.bookwp-panels {
+	background: var(--bookwp-surface);
+	border: 1px solid var(--bookwp-line);
+	border-radius: var(--bookwp-radius);
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.bookwp-panel {
+	padding: 24px 28px 8px;
+}
+
+.bookwp-panel[hidden] {
+	display: none;
+}
+
+.bookwp-panel__title {
+	margin: 0 0 4px;
+	font-size: 18px;
+	font-weight: 600;
+}
+
+.bookwp-panel__description {
+	margin: 0 0 20px;
+	color: var(--bookwp-ink-muted);
+	font-size: 13px;
+	max-width: 60ch;
+}
+
+/* ---------- Fields ---------- */
+.bookwp-field {
+	display: grid;
+	grid-template-columns: minmax(0, 260px) minmax(0, 1fr);
+	gap: 8px 32px;
+	padding: 20px 0;
+	border-top: 1px solid var(--bookwp-line);
+}
+
+@media (max-width: 960px) {
+	.bookwp-field {
+		grid-template-columns: 1fr;
+	}
+}
+
+.bookwp-field__label-text {
+	display: block;
+	font-size: 14px;
+	font-weight: 600;
+	color: var(--bookwp-ink);
+	margin-bottom: 4px;
+}
+
+.bookwp-field__description {
+	margin: 0;
+	font-size: 12.5px;
+	line-height: 1.5;
+	color: var(--bookwp-ink-muted);
+}
+
+.bookwp-field__control {
+	min-width: 0;
+}
+
+.bookwp-input,
+.bookwp-select,
+.bookwp-textarea {
+	width: 100%;
+	max-width: 520px;
+	border: 1px solid #8c8f94;
+	border-radius: var(--bookwp-radius);
+	padding: 8px 10px;
+	font-size: 14px;
+	line-height: 1.4;
+	background: var(--bookwp-surface);
+	color: var(--bookwp-ink);
+	box-shadow: none;
+}
+
+.bookwp-select {
+	max-width: 320px;
+	min-height: 38px;
+}
+
+.bookwp-textarea {
+	min-height: 110px;
+	resize: vertical;
+	font-family: Menlo, Consolas, monospace;
+	font-size: 13px;
+}
+
+.bookwp-input:focus,
+.bookwp-select:focus,
+.bookwp-textarea:focus {
+	border-color: var(--bookwp-accent);
+	box-shadow: 0 0 0 1px var(--bookwp-accent);
+	outline: 2px solid transparent;
+}
+
+/* ---------- Colour scheme radios with swatches ---------- */
+.bookwp-radio-group {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+	gap: 10px;
+	max-width: 620px;
+}
+
+.bookwp-radio {
+	position: relative;
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	padding: 10px 12px;
+	border: 1px solid var(--bookwp-line);
+	border-radius: var(--bookwp-radius);
+	cursor: pointer;
+	background: var(--bookwp-surface);
+	transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+
+.bookwp-radio:hover {
+	border-color: #a7aaad;
+}
+
+.bookwp-radio input[type="radio"] {
+	position: absolute;
+	opacity: 0;
+	width: 1px;
+	height: 1px;
+	margin: 0;
+}
+
+.bookwp-radio:has(input:checked),
+.bookwp-radio.is-checked {
+	border-color: var(--bookwp-accent);
+	box-shadow: 0 0 0 1px var(--bookwp-accent);
+}
+
+.bookwp-radio:has(input:focus-visible),
+.bookwp-radio.is-focused {
+	outline: 2px solid var(--bookwp-accent);
+	outline-offset: 2px;
+}
+
+.bookwp-radio__swatch {
+	flex: 0 0 auto;
+	width: 28px;
+	height: 28px;
+	border-radius: 50%;
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	background: #ffffff;
+}
+
+.bookwp-radio--black-white .bookwp-radio__swatch {
+	background: linear-gradient(135deg, #ffffff 50%, #1a1a1a 50%);
+}
+
+.bookwp-radio--cream-brown .bookwp-radio__swatch {
+	background: linear-gradient(135deg, #fdf6e3 50%, #7a3b1e 50%);
+}
+
+.bookwp-radio--dark .bookwp-radio__swatch {
+	background: linear-gradient(135deg, #15171a 50%, #e8e6e3 50%);
+}
+
+.bookwp-radio--auto .bookwp-radio__swatch {
+	background: conic-gradient(#ffffff 0 25%, #1a1a1a 25% 50%, #15171a 50% 75%, #e8e6e3 75%);
+}
+
+.bookwp-radio__label {
+	font-size: 13.5px;
+	line-height: 1.3;
+}
+
+/* ---------- Colour pickers ---------- */
+.bookwp-field--color .wp-picker-container {
+	display: inline-flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 6px;
+}
+
+.bookwp-field--color .wp-picker-container .wp-color-result {
+	margin: 0;
+	border-radius: var(--bookwp-radius);
+	height: 34px;
+}
+
+.bookwp-field--color .wp-picker-container input[type="text"].wp-color-picker {
+	width: 110px;
+	border-radius: var(--bookwp-radius);
+}
+
+/* ---------- Switch (checkbox) ---------- */
+.bookwp-switch {
+	display: inline-flex;
+	align-items: center;
+	gap: 12px;
+	cursor: pointer;
+	font-size: 14px;
+	line-height: 1.4;
+}
+
+.bookwp-switch input[type="checkbox"] {
+	position: absolute;
+	opacity: 0;
+	width: 1px;
+	height: 1px;
+	margin: 0;
+}
+
+.bookwp-switch__track {
+	position: relative;
+	display: inline-block;
+	width: 42px;
+	height: 24px;
+	border-radius: 12px;
+	background: #8c8f94;
+	transition: background-color 150ms ease;
+	flex: 0 0 auto;
+}
+
+.bookwp-switch__thumb {
+	position: absolute;
+	top: 3px;
+	left: 3px;
+	width: 18px;
+	height: 18px;
+	border-radius: 50%;
+	background: #ffffff;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+	transition: transform 150ms ease;
+}
+
+.bookwp-switch input:checked + .bookwp-switch__track {
+	background: var(--bookwp-accent);
+}
+
+.bookwp-switch input:checked + .bookwp-switch__track .bookwp-switch__thumb {
+	transform: translateX(18px);
+}
+
+.bookwp-switch input:focus-visible + .bookwp-switch__track {
+	outline: 2px solid var(--bookwp-accent);
+	outline-offset: 2px;
+}
+
+.bookwp-switch__text {
+	color: var(--bookwp-ink);
+}
+
+/* ---------- Actions ---------- */
+.bookwp-options__actions {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	padding: 16px 28px;
+	border-top: 1px solid var(--bookwp-line);
+	background: var(--bookwp-surface-alt);
+	border-radius: 0 0 var(--bookwp-radius) var(--bookwp-radius);
+}
+
+.bookwp-options .button.bookwp-button {
+	border-radius: var(--bookwp-radius);
+	padding: 0 18px;
+	min-height: 36px;
+	line-height: 34px;
+}
+
+.bookwp-options__dirty {
+	font-size: 13px;
+	color: var(--bookwp-ink-muted);
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+	.bookwp-tabs__tab,
+	.bookwp-radio,
+	.bookwp-switch__track,
+	.bookwp-switch__thumb {
+		transition: none;
+	}
+}

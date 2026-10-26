@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // ============================================================
-// 13. JSON-LD STRUCTURED DATA (Minimal, filterable)
+// JSON-LD STRUCTURED DATA (Minimal, filterable)
 // ============================================================
 
 /**
@@ -34,13 +34,18 @@ function bookwp_structured_data() {
 		return;
 	}
 
-	$post_type = bookwp_is_pro_mode() ? 'chapter' : 'post';
-	if ( ! is_singular( $post_type ) ) {
+	$post = get_post();
+	if ( ! $post ) {
 		return;
 	}
 
-	$post = get_post();
-	if ( ! $post ) {
+	// Only chapters carry Article markup: the 'chapter' CPT in Pro Mode, or
+	// posts in the 'chapter' category in Default Mode.
+	if ( bookwp_is_pro_mode() ) {
+		if ( ! is_singular( 'chapter' ) ) {
+			return;
+		}
+	} elseif ( ! is_singular( 'post' ) || ! has_category( 'chapter', $post ) ) {
 		return;
 	}
 
@@ -58,7 +63,7 @@ function bookwp_structured_data() {
 add_action( 'wp_head', 'bookwp_structured_data' );
 
 // ============================================================
-// 14. EXTENSIBILITY HOOKS
+// EXTENSIBILITY HOOKS
 // ============================================================
 
 /**
@@ -82,7 +87,7 @@ function bookwp_after_chapter_content( $post ) {
 }
 
 // ============================================================
-// 15. HEAD CLEANUP
+// HEAD CLEANUP
 // ============================================================
 
 /**
@@ -93,4 +98,4 @@ function bookwp_head_cleanup() {
 	remove_action( 'wp_head', 'wlwmanifest_link' );
 	remove_action( 'wp_head', 'wp_generator' );
 }
-add_action( 'init', 'bookwp_head_cleanup' ); // Function defined above — correct order.
+add_action( 'init', 'bookwp_head_cleanup' );

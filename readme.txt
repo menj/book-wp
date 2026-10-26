@@ -1,10 +1,10 @@
 === Book WP ===
 Contributors: menj
 Tags: one-column, custom-colors, custom-menu, translation-ready, accessibility-ready, blog
-Requires at least: 6.0
-Tested up to: 6.7
+Requires at least: 6.2
+Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 2.0.0
+Stable tag: 2.1.0
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -16,9 +16,9 @@ Book WP is a WordPress theme designed for authors and publishers who want to sha
 
 **Default Mode** requires no plugin installation. Chapters are ordinary WordPress posts assigned to the "chapter" category. A numeric `chapter_number` custom field controls ordering. The front page automatically renders a Table of Contents.
 
-**Pro Mode** (opt-in via Customizer) registers a dedicated `chapter` Custom Post Type and a `book` taxonomy, enabling multiple books, cleaner URLs, and `menu_order`-based chapter sequencing.
+**Pro Mode** (opt-in via Theme Options) registers a dedicated `chapter` Custom Post Type and a `book` taxonomy, enabling multiple books, cleaner URLs, and `menu_order`-based chapter sequencing.
 
-All settings are managed through the Customizer under Appearance → Customize → Book Settings.
+All settings live on a tabbed **Theme Options** page under Appearance → Theme Options (Typography & Colours, Content & Blurbs, Advanced). The same settings are mirrored in the Customizer (Appearance → Customize → Book WP) for live preview; both surfaces read and write one `bookwp_options` array.
 
 **Hybrid Theme / Global Styles:** Book WP ships `theme.json` (version 3), making it a hybrid classic theme. While full Site Editor template editing requires a block theme, the Appearance → Editor → Styles panel is available for adjusting colours, typography, and spacing through a visual interface without editing code.
 
@@ -26,9 +26,9 @@ All settings are managed through the Customizer under Appearance → Customize �
 
 1. Upload the `book-wp` folder to your `/wp-content/themes/` directory, or install via Appearance → Themes → Add New.
 2. Activate the theme under Appearance → Themes.
-3. Visit Appearance → Customize → Book Settings to configure fonts, color scheme, blurbs, and copyright.
+3. Visit Appearance → Theme Options to configure fonts, colour scheme, custom colours, blurbs, and copyright. Use Appearance → Customize → Book WP for a live preview of the same settings.
 4. In **Default Mode**: Create posts, assign them to the "chapter" category, and add a `chapter_number` custom field (integer) to each for deterministic ordering.
-5. In **Pro Mode**: Enable "Pro Mode" in the Customizer, then visit Settings → Permalinks to flush rewrite rules. Create Book terms and assign Chapter posts to them.
+5. In **Pro Mode**: Enable "Pro Mode" under Theme Options → Advanced. Permalinks are refreshed automatically. Create Book terms and assign Chapter posts to them.
 
 == Usage ==
 
@@ -38,14 +38,14 @@ All settings are managed through the Customizer under Appearance → Customize �
 - Add a custom field `chapter_number` (integer) to each chapter post. Chapters are ordered by this value ascending. If missing, ordering falls back to publish date.
 - The front page renders your Table of Contents automatically.
 - The site title and description form the book header.
-- Configure a front-page blurb and chapter header blurb under Customizer → Book Settings.
+- Configure a front-page blurb and chapter header blurb under Theme Options → Content & Blurbs.
 
 === Pro Mode ===
 
 Pro Mode activates a Custom Post Type `chapter` and a hierarchical taxonomy `book`.
 
-1. Enable "Pro Mode" in Customizer → Book Settings.
-2. Flush rewrite rules: Settings → Permalinks → Save Changes.
+1. Enable "Pro Mode" under Theme Options → Advanced. Rewrite rules are flushed automatically on the next page load.
+2. (Optional) If pretty permalinks still 404, visit Settings → Permalinks → Save Changes once.
 3. Create Book terms under Posts → Books.
 4. Create Chapter posts under Chapters, assigned to a Book term.
 5. Use the "Order" field (Page Attributes) on each chapter to set `menu_order`. Fallback: `chapter_number` meta, then date.
@@ -55,16 +55,22 @@ Pro Mode activates a Custom Post Type `chapter` and a hierarchical taxonomy `boo
 
 Choose from: Georgia (default, no external request), Vollkorn, Arvo, Maven Pro, or Ubuntu. Non-Georgia fonts are loaded from Google Fonts over HTTPS with `display=swap`.
 
-=== Color Schemes ===
+=== Colour Schemes ===
 
 - **Black and White**: Clean, high-contrast default.
 - **Cream and Brown**: Warm, parchment-inspired.
+- **Dark**: Night-reading palette on a near-black background.
+- **Auto**: Light by default, switching to the Dark palette when the reader's system prefers dark mode.
 
-Both schemes meet WCAG 2.2 AA contrast requirements (4.5:1 for body text, 3:1 for UI components).
+Every scheme meets WCAG 2.2 AA contrast requirements (4.5:1 for body text, 3:1 for UI components). Every colour is a CSS custom property, so child themes can override a scheme by redefining the variables.
+
+=== Custom Colours ===
+
+Under Theme Options → Typography & Colours you can optionally override the background, text, and accent colour of the active scheme. Leave a field empty to keep the scheme default. Custom colours are output as a small inline style on `<body>`, so no extra stylesheet is loaded. Check contrast yourself when choosing custom colours.
 
 === Global Styles (theme.json) ===
 
-Book WP ships `theme.json` v3 defining a curated colour palette (9 swatches), font family declarations matching the Customizer options, a type scale, and spacing tokens. WP's default 20+ colours and gradients are suppressed in favour of the theme palette. Access via Appearance → Editor → Styles.
+Book WP ships `theme.json` v3 defining a curated colour palette (12 swatches, including the Dark scheme), font family declarations matching the Customizer options, a type scale, and spacing tokens. WP's default 20+ colours and gradients are suppressed in favour of the theme palette. Access via Appearance → Editor → Styles.
 
 == Accessibility (WCAG 2.2 AA) ==
 
@@ -114,10 +120,10 @@ WordPress 6.5+ also auto-loads translation files placed in `wp-content/languages
 
 == Security ==
 
-- All settings saved only through the WordPress Customizer (no direct `$_POST` saving).
+- All settings saved through the WordPress Settings API or Customizer API (no direct `$_POST` handling); one array option with a schema-driven sanitizer.
 - All output escaped by context (`esc_html`, `esc_url`, `esc_attr`, `wp_kses_post`).
 - All inputs sanitized on save (`sanitize_text_field`, `absint`, `wp_kses_post`).
-- Nonce verification handled by the Customizer API.
+- Nonce verification handled by the Settings API and Customizer API.
 - `ABSPATH` guard on all PHP files.
 - No HTTP asset URLs. No external CDN jQuery override.
 - No tracking or analytics code embedded by default.
@@ -131,12 +137,14 @@ book-wp/
 ├── theme.json                       Global Styles / block editor palette (v3)
 ├── functions.php                    Loader only — requires inc/ files
 ├── inc/
-│   ├── customizer.php               Customizer settings, option helper, font map, body class
-│   ├── pro-mode.php                 Chapter CPT, Book taxonomy, term meta, rewrite flush
-│   ├── setup.php                    Theme supports, asset enqueue, sidebar
+│   ├── options.php                  Option schema, bookwp_get_option(), sanitizers, font map, colour schemes
+│   ├── pro-mode.php                 Chapter CPT, Book taxonomy, term meta, automatic rewrite flush
+│   ├── setup.php                    Theme supports, asset enqueue, body classes, sidebar
+│   ├── customizer.php               Customizer panel + sections (live preview of the same options)
 │   ├── chapters.php                 Chapter query helpers (Default + Pro Mode)
-│   ├── admin.php                    Admin notices, legacy options page redirect
-│   └── structured-data.php         JSON-LD, extensibility hooks, head cleanup
+│   ├── admin.php                    Admin notices (cached)
+│   ├── theme-options.php            Appearance → Theme Options tabbed settings page
+│   └── structured-data.php          JSON-LD, extensibility hooks, head cleanup
 ├── header.php
 ├── footer.php
 ├── index.php
@@ -166,9 +174,15 @@ book-wp/
 │   ├── page-blank.php
 │   └── page-landing.php
 ├── assets/
-│   ├── css/book-wp.css
-│   ├── js/book-wp.js
+│   ├── css/book-wp.css              Front-end styles
+│   ├── css/editor.css               Block editor styles (typography + colour tokens only)
+│   ├── css/admin.css                Theme Options page styles
+│   ├── js/book-wp.js                Front-end script (vanilla JS)
+│   ├── js/admin.js                  Theme Options tabs, colour pickers
 │   └── img/
+├── bin/make-pot.php                 Regenerates languages/book-wp.pot
+├── .github/workflows/lint.yml       CI: PHP syntax, WPCS, Theme Check, .pot freshness
+├── composer.json / phpcs.xml.dist   Dev tooling (WordPress Coding Standards)
 ├── languages/
 │   ├── book-wp.pot                  Master translation template
 │   ├── fr_FR.po / fr_FR.mo          French
@@ -188,7 +202,7 @@ Add a custom field named `chapter_number` (integer) to each chapter post. Chapte
 Chapters fall back to publish date order. An admin notice will appear suggesting you add `chapter_number` for deterministic ordering.
 
 = Can I use this for multiple books? =
-Yes. Enable Pro Mode in the Customizer. Pro Mode adds a `book` taxonomy so you can group chapters under separate books, each with its own landing page.
+Yes. Enable Pro Mode under Appearance → Theme Options → Advanced. Pro Mode adds a `book` taxonomy so you can group chapters under separate books, each with its own landing page.
 
 = Can I edit the theme layout visually? =
 Book WP is a hybrid classic theme. Full template editing (Site Editor canvas) requires a block theme. However, Appearance → Editor → Styles is available for adjusting Global Styles (colours, typography, spacing) through a visual interface.
@@ -207,6 +221,9 @@ Open `languages/book-wp.pot` in Poedit, translate all strings, and save as `{loc
 See changelog.md for the full changelog.
 
 == Upgrade Notice ==
+
+= 2.1.0 =
+Settings are back on a dedicated, tabbed Theme Options page (Appearance → Theme Options) and mirrored in the Customizer. Existing 2.0 and 1.x settings migrate automatically. New Dark and Auto colour schemes, optional custom colours, automatic permalink refresh when toggling Pro Mode.
 
 = 2.0.0 =
 Major rewrite. Settings have moved from the old Theme Options page to the Customizer (Appearance → Customize → Book Settings). Directory structure reorganised: template parts are now in subdirectories; logic is split across inc/ files. See upgrading.md for full details.

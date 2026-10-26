@@ -46,7 +46,7 @@ endif;
 
 <?php
 // Chapter blurb: shown on chapter single pages only.
-$chapter_blurb = bookwp_get_option( 'bookwp_chapter_blurb', '' );
+$chapter_blurb = bookwp_get_option( 'chapter_blurb' );
 $is_chapter    = (
 	( ! bookwp_is_pro_mode() && is_singular( 'post' ) && has_category( 'chapter' ) ) ||
 	( bookwp_is_pro_mode() && is_singular( 'chapter' ) )

@@ -17,20 +17,9 @@ if ( ! $post_id ) {
 	return;
 }
 
-if ( bookwp_is_pro_mode() ) {
-	// Pro Mode: determine surrounding chapters within same book.
-	$book_terms = get_the_terms( $post_id, 'book' );
-	$book_term  = ( $book_terms && ! is_wp_error( $book_terms ) ) ? reset( $book_terms ) : null;
-	$chapters   = bookwp_get_pro_chapter_posts( $book_term ? $book_term->term_id : null );
-} else {
-	$chapters = bookwp_get_chapter_posts();
-}
-
-$ids   = wp_list_pluck( $chapters, 'ID' );
-$index = array_search( $post_id, $ids, true );
-
-$prev = ( false !== $index && $index > 0 ) ? $chapters[ $index - 1 ] : null;
-$next = ( false !== $index && $index < count( $chapters ) - 1 ) ? $chapters[ $index + 1 ] : null;
+$adjacent = bookwp_get_adjacent_chapters( $post_id );
+$prev     = $adjacent['prev'];
+$next     = $adjacent['next'];
 
 // Allow template override via passed variables.
 if ( isset( $prev_chapter ) ) {

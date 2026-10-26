@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // ============================================================
-// 10. CHAPTER NAVIGATION HELPERS
+// CHAPTER NAVIGATION HELPERS
 // ============================================================
 
 /**
@@ -68,15 +68,33 @@ function bookwp_get_chapter_category_id() {
 }
 
 /**
- * Return the prev/next chapter posts relative to $post_id (Default Mode).
+ * Return the ordered chapter list that $post_id belongs to, in either mode.
+ *
+ * In Pro Mode the list is scoped to the chapter's first assigned Book term;
+ * in Default Mode it is every post in the 'chapter' category.
  *
  * @param int $post_id Current post ID.
- * @return array{ prev: WP_Post|null, next: WP_Post|null }
+ * @return WP_Post[]
+ */
+function bookwp_get_chapter_sequence( $post_id ) {
+	if ( bookwp_is_pro_mode() ) {
+		$book_terms = get_the_terms( $post_id, 'book' );
+		$book_term  = ( $book_terms && ! is_wp_error( $book_terms ) ) ? reset( $book_terms ) : null;
+		return bookwp_get_pro_chapter_posts( $book_term ? $book_term->term_id : null );
+	}
+	return bookwp_get_chapter_posts();
+}
+
+/**
+ * Return the prev/next chapter posts relative to $post_id (either mode).
+ *
+ * @param int $post_id Current post ID.
+ * @return array{prev: WP_Post|null, next: WP_Post|null}
  */
 function bookwp_get_adjacent_chapters( $post_id ) {
-	$chapters = bookwp_get_chapter_posts();
-	$ids      = wp_list_pluck( $chapters, 'ID' );
-	$index    = array_search( $post_id, $ids, true );
+	$chapters = bookwp_get_chapter_sequence( (int) $post_id );
+	$ids      = array_map( 'intval', wp_list_pluck( $chapters, 'ID' ) );
+	$index    = array_search( (int) $post_id, $ids, true );
 
 	return array(
 		'prev' => ( false !== $index && $index > 0 ) ? $chapters[ $index - 1 ] : null,

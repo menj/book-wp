@@ -62,6 +62,21 @@
 					"slug": "brown-accent",
 					"color": "#7a3b1e",
 					"name": "Brown Accent"
+				},
+				{
+					"slug": "dark-bg",
+					"color": "#15171a",
+					"name": "Dark Background"
+				},
+				{
+					"slug": "dark-fg",
+					"color": "#e8e6e3",
+					"name": "Dark Foreground"
+				},
+				{
+					"slug": "dark-accent",
+					"color": "#8ab4f8",
+					"name": "Dark Accent"
 				}
 			]
 		},
@@ -132,13 +147,41 @@
 		"spacing": {
 			"defaultSpacingSizes": false,
 			"spacingSizes": [
-				{ "slug": "xs",  "size": "0.25rem", "name": "XS" },
-				{ "slug": "sm",  "size": "0.5rem",  "name": "SM" },
-				{ "slug": "md",  "size": "1rem",    "name": "MD" },
-				{ "slug": "lg",  "size": "1.5rem",  "name": "LG" },
-				{ "slug": "xl",  "size": "2rem",    "name": "XL" },
-				{ "slug": "2xl", "size": "3rem",    "name": "2XL" },
-				{ "slug": "3xl", "size": "4rem",    "name": "3XL" }
+				{
+					"slug": "xs",
+					"size": "0.25rem",
+					"name": "XS"
+				},
+				{
+					"slug": "sm",
+					"size": "0.5rem",
+					"name": "SM"
+				},
+				{
+					"slug": "md",
+					"size": "1rem",
+					"name": "MD"
+				},
+				{
+					"slug": "lg",
+					"size": "1.5rem",
+					"name": "LG"
+				},
+				{
+					"slug": "xl",
+					"size": "2rem",
+					"name": "XL"
+				},
+				{
+					"slug": "2xl",
+					"size": "3rem",
+					"name": "2XL"
+				},
+				{
+					"slug": "3xl",
+					"size": "4rem",
+					"name": "3XL"
+				}
 			],
 			"padding": true,
 			"margin": true,
@@ -299,17 +342,23 @@
 		{
 			"name": "page-toc",
 			"title": "Table of Contents",
-			"postTypes": [ "page" ]
+			"postTypes": [
+				"page"
+			]
 		},
 		{
 			"name": "page-blank",
 			"title": "Blank Page",
-			"postTypes": [ "page" ]
+			"postTypes": [
+				"page"
+			]
 		},
 		{
 			"name": "page-landing",
 			"title": "Book Landing Page",
-			"postTypes": [ "page" ]
+			"postTypes": [
+				"page"
+			]
 		}
 	]
 }

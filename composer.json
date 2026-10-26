@@ -1,0 +1,29 @@
+{
+	"name": "menj/book-wp",
+	"description": "A clean, accessible WordPress theme for publishing online books.",
+	"type": "wordpress-theme",
+	"license": "GPL-2.0-or-later",
+	"require": {
+		"php": ">=7.4"
+	},
+	"require-dev": {
+		"wp-coding-standards/wpcs": "^3.1",
+		"dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+		"phpcompatibility/phpcompatibility-wp": "^2.1"
+	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
+	},
+	"scripts": {
+		"lint": "for f in $(git ls-files '*.php'); do php -l -n \"$f\" > /dev/null || exit 1; done && echo 'PHP syntax OK'",
+		"phpcs": "phpcs",
+		"phpcs:fix": "phpcbf",
+		"make-pot": "php bin/make-pot.php",
+		"check": [
+			"@lint",
+			"@phpcs"
+		]
+	}
+}

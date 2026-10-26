@@ -1,0 +1,53 @@
+name: Lint
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  php:
+    name: PHP ${{ matrix.php }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php: ['7.4', '8.1', '8.3']
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: none
+          tools: composer:v2
+
+      - name: Syntax check
+        run: |
+          set -e
+          for f in $(git ls-files '*.php'); do php -l -n "$f" > /dev/null; done
+          echo "PHP syntax OK"
+
+      - name: Install Composer dependencies
+        if: matrix.php == '8.3'
+        run: composer install --no-interaction --no-progress --prefer-dist
+
+      - name: WordPress Coding Standards
+        if: matrix.php == '8.3'
+        run: composer phpcs
+
+      - name: Translation template is current
+        if: matrix.php == '8.3'
+        run: |
+          php bin/make-pot.php --check
+
+  theme-check:
+    name: Theme Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run Theme Check
+        uses: anthonyb/theme-check-action@v1
+        with:
+          root: .

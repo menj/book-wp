@@ -1,6 +1,6 @@
 <?php
 /**
- * Theme Setup, Asset Enqueue, and Widget Registration.
+ * Theme Setup, Asset Enqueue, Body Classes, and Widget Registration.
  *
  * @package book-wp
  */
@@ -45,9 +45,10 @@ if ( ! function_exists( 'bookwp_setup' ) ) :
 			)
 		);
 
-		// Editor styles — loads assets/css/book-wp.css into the block editor canvas.
+		// Editor styles — a dedicated sheet with typography and colour tokens only,
+		// so page-chrome rules (html, #page-wrap, skip link) never leak into the editor.
 		add_theme_support( 'editor-styles' );
-		add_editor_style( 'assets/css/book-wp.css' );
+		add_editor_style( 'assets/css/editor.css' );
 
 		// Opt in to WP core block default styles (normalises block output).
 		add_theme_support( 'wp-block-styles' );
@@ -76,29 +77,33 @@ add_action( 'after_setup_theme', 'bookwp_setup' );
 // ============================================================
 
 /**
- * Enqueue scripts and styles.
+ * Enqueue front-end scripts and styles.
  */
 function bookwp_enqueue_assets() {
-	$ver = '2.0.0';
-
 	// Main stylesheet.
 	wp_enqueue_style(
 		'book-wp-style',
 		get_template_directory_uri() . '/assets/css/book-wp.css',
 		array(),
-		$ver
+		BOOKWP_VERSION
 	);
 
-	// Font: enqueue Google Font based on Customizer setting (HTTPS only).
-	$font     = bookwp_get_option( 'bookwp_font', 'georgia' );
+	// Font: enqueue Google Font based on the chosen typeface (HTTPS only).
+	$font     = bookwp_get_option( 'font' );
 	$font_map = bookwp_get_font_map();
 	if ( 'georgia' !== $font && isset( $font_map[ $font ] ) ) {
 		wp_enqueue_style(
 			'book-wp-font-' . sanitize_key( $font ),
 			esc_url( $font_map[ $font ]['url'] ),
 			array(),
-			null
+			null // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion -- Google Fonts URL is versioned by its query string.
 		);
+	}
+
+	// Custom colour overrides chosen on the Theme Options page.
+	$custom_css = bookwp_get_custom_color_css();
+	if ( $custom_css ) {
+		wp_add_inline_style( 'book-wp-style', $custom_css );
 	}
 
 	// Main JS — only loaded on singular and front-page views.
@@ -107,8 +112,15 @@ function bookwp_enqueue_assets() {
 			'book-wp-main',
 			get_template_directory_uri() . '/assets/js/book-wp.js',
 			array(),
-			$ver,
+			BOOKWP_VERSION,
 			true
+		);
+		wp_localize_script(
+			'book-wp-main',
+			'bookwpL10n',
+			array(
+				'opensInNewTab' => __( '(opens in new tab)', 'book-wp' ),
+			)
 		);
 	}
 
@@ -119,8 +131,65 @@ function bookwp_enqueue_assets() {
 }
 add_action( 'wp_enqueue_scripts', 'bookwp_enqueue_assets' );
 
+/**
+ * Load the chosen Google Font inside the block editor too, so the editor
+ * canvas matches the front end.
+ */
+function bookwp_enqueue_editor_font() {
+	$font     = bookwp_get_option( 'font' );
+	$font_map = bookwp_get_font_map();
+	if ( 'georgia' !== $font && isset( $font_map[ $font ] ) ) {
+		add_editor_style( esc_url_raw( $font_map[ $font ]['url'] ) );
+	}
+}
+add_action( 'after_setup_theme', 'bookwp_enqueue_editor_font', 11 );
+
 // ============================================================
-// 3. SIDEBAR
+// 3. BODY CLASSES (font + colour scheme + custom colours)
+// ============================================================
+
+/**
+ * Add font and colour-scheme CSS classes to <body>.
+ *
+ * @param string[] $classes Existing body classes.
+ * @return string[] Modified body classes.
+ */
+function bookwp_body_classes( $classes ) {
+	$font   = bookwp_get_option( 'font' );
+	$scheme = bookwp_get_option( 'color_scheme' );
+
+	if ( 'georgia' !== $font ) {
+		$classes[] = 'font-' . sanitize_html_class( $font );
+	}
+
+	if ( 'black-white' !== $scheme ) {
+		$classes[] = 'color-scheme-' . sanitize_html_class( $scheme );
+	}
+
+	if ( bookwp_get_custom_color_css() ) {
+		$classes[] = 'bookwp-custom-colors';
+	}
+
+	return $classes;
+}
+add_filter( 'body_class', 'bookwp_body_classes' );
+
+/**
+ * Tell browsers which colour schemes the page supports, so form controls and
+ * scrollbars match the dark and auto schemes.
+ */
+function bookwp_color_scheme_meta() {
+	$scheme = bookwp_get_option( 'color_scheme' );
+	if ( 'dark' === $scheme ) {
+		echo '<meta name="color-scheme" content="dark">' . "\n";
+	} elseif ( 'auto' === $scheme ) {
+		echo '<meta name="color-scheme" content="light dark">' . "\n";
+	}
+}
+add_action( 'wp_head', 'bookwp_color_scheme_meta', 1 );
+
+// ============================================================
+// 4. SIDEBAR
 // ============================================================
 
 /**

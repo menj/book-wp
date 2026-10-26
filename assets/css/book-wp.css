@@ -1,7 +1,10 @@
 /*
  * Book WP — Main Stylesheet
- * Version: 2.0.0
  * License: GPL-2.0-or-later
+ *
+ * Every colour is a custom property on :root. Colour schemes override those
+ * properties via a body class (.color-scheme-<slug>); custom colours chosen on
+ * the Theme Options page are injected inline on body.bookwp-custom-colors.
  */
 
 /* ============================================================
@@ -78,6 +81,52 @@
 	--color-footer-text: #4a2810;
 }
 
+/* Dark (night reading) colour scheme — WCAG 2.2 AA on #15171a */
+.color-scheme-dark {
+	--color-bg: #15171a;
+	--color-surface: #1f2226;
+	--color-border: #3a3f46;
+	--color-text: #e8e6e3;
+	--color-text-muted: #b3b0ab;
+	--color-heading: #f5f3f0;
+	--color-link: #8ab4f8;
+	--color-link-visited: #c3a6f5;
+	--color-link-hover: #b1cdfb;
+	--color-focus: #8ab4f8;
+	--color-focus-bg: #26303f;
+	--color-accent: #8ab4f8;
+	--color-toc-current: #8ab4f8;
+	--color-nav-bg: #1f2226;
+	--color-nav-border: #3a3f46;
+	--color-footer-bg: #1a1d21;
+	--color-footer-text: #cfcbc5;
+	color-scheme: dark;
+}
+
+/* Auto: default (light) palette, switching to the dark palette when the reader's system prefers it */
+@media (prefers-color-scheme: dark) {
+	.color-scheme-auto {
+		--color-bg: #15171a;
+		--color-surface: #1f2226;
+		--color-border: #3a3f46;
+		--color-text: #e8e6e3;
+		--color-text-muted: #b3b0ab;
+		--color-heading: #f5f3f0;
+		--color-link: #8ab4f8;
+		--color-link-visited: #c3a6f5;
+		--color-link-hover: #b1cdfb;
+		--color-focus: #8ab4f8;
+		--color-focus-bg: #26303f;
+		--color-accent: #8ab4f8;
+		--color-toc-current: #8ab4f8;
+		--color-nav-bg: #1f2226;
+		--color-nav-border: #3a3f46;
+		--color-footer-bg: #1a1d21;
+		--color-footer-text: #cfcbc5;
+		color-scheme: dark;
+	}
+}
+
 /* ============================================================
    Font Face (loaded via enqueue fallbacks; these are system/safe)
    ============================================================ */
@@ -129,13 +178,13 @@ body {
 	z-index: 9999;
 	padding: var(--spacing-sm) var(--spacing-lg);
 	background: var(--color-heading);
-	color: #ffffff;
+	color: var(--color-bg);
 	font-family: var(--font-ui);
 	font-size: var(--font-size-sm);
 	font-weight: 700;
 	text-decoration: none;
 	border-radius: 0 0 var(--radius) var(--radius);
-	border: 3px solid #ffffff;
+	border: 3px solid var(--color-bg);
 }
 
 .skip-link:focus {
@@ -402,14 +451,13 @@ hr {
 
 .toc-list a {
 	display: flex;
-	align-items: baseline;
+	align-items: center;
 	gap: var(--spacing-md);
 	padding: var(--spacing-md) var(--spacing-sm);
 	color: var(--color-link);
 	text-decoration: none;
 	font-size: var(--font-size-base);
 	min-height: 44px; /* WCAG 2.5.8 */
-	align-items: center;
 }
 
 .toc-list a::before {
@@ -623,7 +671,7 @@ hr {
 .search-submit {
 	padding: var(--spacing-sm) var(--spacing-lg);
 	background: var(--color-accent);
-	color: #ffffff;
+	color: var(--color-bg);
 	border: none;
 	border-radius: var(--radius);
 	font-size: var(--font-size-sm);
@@ -740,10 +788,8 @@ hr {
    Text Spacing Override Resilience (WCAG 1.4.12)
    Ensure no content clipped when user overrides spacing.
    ============================================================ */
-* {
-	/* We do not set overflow:hidden on text containers. */
-	/* Line-height, letter-spacing, word-spacing set in rem not px. */
-}
+/* No overflow:hidden on text containers; line-height, letter-spacing and
+   word-spacing are set in relative units so user overrides never clip text. */
 
 /* ============================================================
    Responsive

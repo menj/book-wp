@@ -1,6 +1,6 @@
 <?php
 /**
- * Pro Mode: Chapter CPT, Book Taxonomy, and Term Meta Registration.
+ * Pro Mode: Chapter CPT, Book Taxonomy, Term Meta, and Rewrite Flushing.
  *
  * All CPT/taxonomy registration is guarded by bookwp_is_pro_mode() so that
  * Default Mode installs are completely unaffected.
@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // ============================================================
-// 8. PRO MODE: CPT + TAXONOMY
+// 1. PRO MODE: CPT + TAXONOMY
 // ============================================================
 
 /**
@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @return bool
  */
 function bookwp_is_pro_mode() {
-	return (bool) bookwp_get_option( 'bookwp_enable_pro_mode', 0 );
+	return (bool) bookwp_get_option( 'enable_pro_mode' );
 }
 
 /**
@@ -83,6 +83,10 @@ function bookwp_register_pro_mode() {
 }
 add_action( 'init', 'bookwp_register_pro_mode' );
 
+// ============================================================
+// 2. REWRITE FLUSHING
+// ============================================================
+
 /**
  * Flush rewrite rules once on theme activation.
  * Registers the CPT/taxonomy first so rules include them.
@@ -95,8 +99,45 @@ function bookwp_flush_rewrites_on_switch() {
 }
 add_action( 'after_switch_theme', 'bookwp_flush_rewrites_on_switch' );
 
+/**
+ * When the Pro Mode toggle changes (from the Theme Options page or the
+ * Customizer), schedule a rewrite flush. The flush itself runs on the next
+ * request after the CPT has been (un)registered on init, so the rules are
+ * generated against the correct post types.
+ *
+ * @param mixed $old_value Previous options array.
+ * @param mixed $new_value New options array.
+ */
+function bookwp_schedule_rewrite_flush( $old_value, $new_value ) {
+	$old = is_array( $old_value ) && isset( $old_value['enable_pro_mode'] ) ? (int) $old_value['enable_pro_mode'] : 0;
+	$new = is_array( $new_value ) && isset( $new_value['enable_pro_mode'] ) ? (int) $new_value['enable_pro_mode'] : 0;
+	if ( $old !== $new ) {
+		update_option( 'bookwp_flush_rewrites', 1, false );
+	}
+}
+add_action( 'update_option_' . BOOKWP_OPTION_NAME, 'bookwp_schedule_rewrite_flush', 10, 2 );
+add_action(
+	'add_option_' . BOOKWP_OPTION_NAME,
+	function ( $option, $value ) {
+		bookwp_schedule_rewrite_flush( array(), $value );
+	},
+	10,
+	2
+);
+
+/**
+ * Perform a scheduled rewrite flush after post types are registered.
+ */
+function bookwp_maybe_flush_rewrites() {
+	if ( get_option( 'bookwp_flush_rewrites' ) ) {
+		delete_option( 'bookwp_flush_rewrites' );
+		flush_rewrite_rules();
+	}
+}
+add_action( 'init', 'bookwp_maybe_flush_rewrites', 99 );
+
 // ============================================================
-// 9. BOOK TERM META (Pro Mode)
+// 3. BOOK TERM META (Pro Mode)
 // ============================================================
 
 /**

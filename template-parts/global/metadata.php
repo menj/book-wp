@@ -27,7 +27,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<?php
 			printf(
 				/* translators: %s: author name */
-				esc_html__( ' by %s', 'book-wp' ),
+				esc_html__( 'by %s', 'book-wp' ),
 				esc_html( $author )
 			);
 			?>

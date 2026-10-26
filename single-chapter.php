@@ -21,7 +21,7 @@ get_header();
 			get_template_part( 'template-parts/content/content', 'chapter' );
 			get_template_part( 'template-parts/navigation/chapter-navigation' );
 
-			if ( (int) bookwp_get_option( 'bookwp_show_comments', 0 ) && comments_open() ) :
+			if ( (int) bookwp_get_option( 'show_comments' ) && comments_open() ) :
 				?>
 				<section class="comments-section">
 					<?php comments_template(); ?>

@@ -1,5 +1,28 @@
 # Upgrading Book WP
 
+## From 2.0.x to 2.1.0
+
+No action is required. On the first dashboard visit by an administrator, 2.1.0 copies your 2.0.x Customizer settings (and any remaining 1.x `book_wp_*` options) into a single `bookwp_options` array. The 1.x value `maven` is remapped to `maven-pro` during this step.
+
+**Where settings live now**
+
+| Surface | Location | Purpose |
+|---|---|---|
+| Theme Options page | Appearance → Theme Options | Primary, tabbed settings page |
+| Customizer | Appearance → Customize → Book WP | Live preview of the same settings |
+
+Both write to the same option, so a change in one appears in the other.
+
+**Child themes and code**
+
+- `bookwp_get_option( 'bookwp_font' )` still works; the `bookwp_` prefix is optional. New code should use the bare key, e.g. `bookwp_get_option( 'font' )`.
+- `bookwp_get_font_map()` now lives in `inc/options.php` and each entry includes a `label`. Fonts can be added with the `bookwp_font_map` filter.
+- New filter `bookwp_color_scheme_choices` for registering extra schemes; add a matching `.color-scheme-<slug>` rule in CSS.
+- Templates that call `bookwp_get_adjacent_chapters( $post_id )` now get mode-aware results in both Default and Pro Mode.
+- Toggling Pro Mode flushes rewrite rules automatically; you no longer need to tell users to resave permalinks.
+
+---
+
 ## From 1.x to 2.0.0
 
 Version 2.0.0 is a full rewrite. Read this guide carefully before upgrading on a live site.
