@@ -27,10 +27,10 @@ Shipped as a dedicated **Appearance → Theme Options** page with three tabs plu
 
 ## 3. Fonts
 
-- [ ] **Add the additional font stack requested by the owner.** (Still blocked: stack not yet provided.) _Font stack not yet provided — paste family names, fallback chain, source (Google Fonts / self-hosted / system), weights, and whether it is a new choice or the new default._ When adding a font, update all of:
-  - `bookwp_get_font_map()` and `bookwp_sanitize_font()` in `inc/customizer.php`
-  - the `choices` array of the `bookwp_font` control
+- [ ] **Add the additional font stack requested by the owner.** _Blocked until the stack is provided: paste family names, fallback chain, source (Google Fonts / self-hosted / system), weights, and whether it is a new choice or the new default._ When adding a font, update all of:
+  - `bookwp_get_font_map()` in `inc/options.php` (choices, sanitizer, Theme Options and Customizer all read from it), or the `bookwp_font_map` filter from a child theme
   - the `.font-*` body-class rules in `assets/css/book-wp.css`
+  - the matching rule in `assets/css/editor.css`
   - `settings.typography.fontFamilies` in `theme.json`
   - `languages/book-wp.pot` (new label string)
 - [ ] **Consider self-hosting web fonts** under `assets/fonts/` with `@font-face` to avoid the third-party Google Fonts request (privacy/GDPR and offline reliability).
@@ -57,3 +57,15 @@ Shipped as a dedicated **Appearance → Theme Options** page with three tabs plu
 - All colours are CSS custom properties on `:root`, swapped per scheme via a body class.
 - All PHP files pass `php -l`; output is escaped by context; all `inc/` and template files carry `ABSPATH` guards.
 - French and Malay translations are complete against the current `.pot`.
+
+## 6. Design pass (shipped in 2.1.0)
+
+- [x] Align header and footer to the reading column, including on mobile.
+- [x] Style the footer credit to match the copyright line.
+- [x] Replace boxed previous/next cards with lighter borderless links.
+- [x] Use the interface font for table-of-contents numbers; remove the current-chapter arrow.
+- [x] Theme Options: distinct scheme swatches, On/Off switch text, styled Customizer link.
+
+## 7. Still open
+
+- [ ] Add translations for the new 2.1.0 strings to `fr_FR.po` and `ms_MY.po`, then recompile the `.mo` files.

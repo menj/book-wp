@@ -223,7 +223,7 @@ See changelog.md for the full changelog.
 == Upgrade Notice ==
 
 = 2.1.0 =
-Settings are back on a dedicated, tabbed Theme Options page (Appearance → Theme Options) and mirrored in the Customizer. Existing 2.0 and 1.x settings migrate automatically. New Dark and Auto colour schemes, optional custom colours, automatic permalink refresh when toggling Pro Mode.
+Settings are back on a dedicated, tabbed Theme Options page (Appearance → Theme Options) and mirrored in the Customizer. Existing 2.0 and 1.x settings migrate automatically. New Dark and Auto colour schemes, optional custom colours, automatic permalink refresh when toggling Pro Mode. Header and footer now align to the reading column and chapter navigation is lighter; child themes that restyle these should check upgrading.md.
 
 = 2.0.0 =
 Major rewrite. Settings have moved from the old Theme Options page to the Customizer (Appearance → Customize → Book Settings). Directory structure reorganised: template parts are now in subdirectories; logic is split across inc/ files. See upgrading.md for full details.

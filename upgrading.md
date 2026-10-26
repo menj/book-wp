@@ -19,6 +19,13 @@ Both write to the same option, so a change in one appears in the other.
 - `bookwp_get_font_map()` now lives in `inc/options.php` and each entry includes a `label`. Fonts can be added with the `bookwp_font_map` filter.
 - New filter `bookwp_color_scheme_choices` for registering extra schemes; add a matching `.color-scheme-<slug>` rule in CSS.
 - Templates that call `bookwp_get_adjacent_chapters( $post_id )` now get mode-aware results in both Default and Pro Mode.
+
+**Visual changes child themes may notice**
+
+- `.site-header-inner` and `.site-footer-inner` now use the 720px reading width instead of 960px, so the title, text and footer share one left edge.
+- `.chapter-nav-link` is no longer a boxed card: no background, border or radius. Restore them in a child theme if you prefer the old look.
+- The `::after` arrow on the current table-of-contents item is removed.
+- `.footer-credit` is now styled to match `.footer-copyright`.
 - Toggling Pro Mode flushes rewrite rules automatically; you no longer need to tell users to resave permalinks.
 
 ---
@@ -26,6 +33,8 @@ Both write to the same option, so a change in one appears in the other.
 ## From 1.x to 2.0.0
 
 Version 2.0.0 is a full rewrite. Read this guide carefully before upgrading on a live site.
+
+> **Upgrading straight from 1.x to 2.1.0 or later?** Your 1.x settings migrate automatically into the new Theme Options page. Where this section says "Customizer → Book Settings", use **Appearance → Theme Options** instead, and skip the manual permalink step: 2.1.0 refreshes permalinks automatically when Pro Mode changes.
 
 ---
 
@@ -163,6 +172,7 @@ The new `assets/js/book-wp.js` is vanilla JavaScript (no jQuery dependency).
 - Appearance → Editor → Styles is available for adjusting colours, typography, and spacing visually.
 - The block editor colour palette is now the theme's curated 9-colour set. WordPress's default 20+ colours and gradients are suppressed.
 - Font family choices in the editor match the 5 fonts available in the Customizer.
+- As of 2.1.0 the palette has 12 swatches, adding the Dark scheme colours.
 
 **If you have a child theme with custom colours:** Consider defining your colour overrides in a `theme.json` in your child theme rather than CSS custom property overrides — this ensures they appear in the editor palette.
 
@@ -233,8 +243,8 @@ _When preparing future upgrade guides, copy this section:_
 ### Steps
 1. Back up your theme (especially child theme overrides).
 2. Deactivate, replace theme files, reactivate.
-3. Visit Appearance → Customize → Book Settings and confirm settings.
-4. If Pro Mode is enabled: Settings → Permalinks → Save Changes.
+3. Visit Appearance → Theme Options and confirm settings on each tab.
+4. If pretty permalinks 404 after toggling Pro Mode: Settings → Permalinks → Save Changes.
 5. Test keyboard navigation and screen reader flow.
 6. Run contrast checks on any custom colour overrides.
 7. Run Lighthouse Accessibility audit — target ≥95.
