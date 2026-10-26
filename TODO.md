@@ -27,13 +27,8 @@ Shipped as a dedicated **Appearance → Theme Options** page with three tabs plu
 
 ## 3. Fonts
 
-- [ ] **Add the additional font stack requested by the owner.** _Blocked until the stack is provided: paste family names, fallback chain, source (Google Fonts / self-hosted / system), weights, and whether it is a new choice or the new default._ When adding a font, update all of:
-  - `bookwp_get_font_map()` in `inc/options.php` (choices, sanitizer, Theme Options and Customizer all read from it), or the `bookwp_font_map` filter from a child theme
-  - the `.font-*` body-class rules in `assets/css/book-wp.css`
-  - the matching rule in `assets/css/editor.css`
-  - `settings.typography.fontFamilies` in `theme.json`
-  - `languages/book-wp.pot` (new label string)
-- [ ] **Consider self-hosting web fonts** under `assets/fonts/` with `@font-face` to avoid the third-party Google Fonts request (privacy/GDPR and offline reliability).
+- ~~Add an additional font stack~~ — closed by the owner; no new font will be added.
+- ~~Consider self-hosting web fonts~~ — closed with the font item above.
 
 ## 4. Maintainability
 
@@ -66,6 +61,6 @@ Shipped as a dedicated **Appearance → Theme Options** page with three tabs plu
 - [x] Use the interface font for table-of-contents numbers; remove the current-chapter arrow.
 - [x] Theme Options: distinct scheme swatches, On/Off switch text, styled Customizer link.
 
-## 7. Still open
+## 7. Closed without action
 
-- [ ] Add translations for the new 2.1.0 strings to `fr_FR.po` and `ms_MY.po`, then recompile the `.mo` files.
+- ~~Add translations for the new 2.1.0 strings to `fr_FR.po` and `ms_MY.po`~~ — closed by the owner. New strings fall back to English in those locales.
