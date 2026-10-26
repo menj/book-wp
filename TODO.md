@@ -64,3 +64,24 @@ Shipped as a dedicated **Appearance → Theme Options** page with three tabs plu
 ## 7. Closed without action
 
 - ~~Add translations for the new 2.1.0 strings to `fr_FR.po` and `ms_MY.po`~~ — closed by the owner. New strings fall back to English in those locales.
+
+## 8. Open after 2.2.0
+
+From the post-2.1.0 codebase check and the SEO pass.
+
+- [ ] **Replace the Theme Check CI job.** `.github/workflows/lint.yml` calls `anthonyb/theme-check-action`, which could not be verified to exist. Remove the job or run the Theme Check plugin in a WordPress test environment.
+- [ ] **Make PHPCS pass.** About 119 errors, mostly unprefixed template variables (`$copyright`, `$chapters`, `$tagline`), file-comment style and alignment. 22 are auto-fixable with `composer phpcs:fix`. Exclude `bin/` in `phpcs.xml.dist`.
+- [ ] **Show the chosen font and custom colours in the block editor.** `assets/css/editor.css` relies on `.font-*` body classes the editor never receives. Inject `--font-body` and colour overrides through the `block_editor_settings_all` filter.
+- [ ] **Remove the dead template overrides** `$prev_chapter` / `$next_chapter` in `template-parts/navigation/chapter-navigation.php`, or read them from `$args` passed to `get_template_part()`.
+- [ ] **Test 2.2.0 in a live WordPress install.** Check the meta description, canonical and JSON-LD output with Google's Rich Results Test, plus the breadcrumbs, the `/book/` redirect and pagination.
+
+### Resolved in 2.2.0
+
+- [x] Structured data HTML-escaped values ("War &amp; Peace").
+- [x] Wrong SEOPress detection constant.
+- [x] Nested `<nav>` on search results.
+- [x] Landing page "Read Now" button styling and generic anchor text.
+
+### Known and accepted
+
+- French and Malay sites show English for strings added or changed since 2.1.0, including "by %s". Translations were closed by the owner.
